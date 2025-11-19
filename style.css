@@ -1,0 +1,177 @@
+/* =======================================
+   3. ESTILOS BÁSICOS Y ESTRUCTURA GENERAL
+   ======================================= */
+
+body {
+    font-family: 'Bad Script', cursive, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background-color: #4CAF50; /* Verde principal */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 15px;
+    font-size: 2.2em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 0;
+    flex-wrap: wrap; /* Permite envolver en pantallas pequeñas */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #388e3c;
+    border-radius: 4px;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    padding: 40px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+section h2, .titulo-carrito {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+}
+
+/* ==========================================================
+   4. DISEÑO RESPONSIVO (PÁGINA DE TIENDA - FLEXBOX)
+   ========================================================== */
+
+/* Contenedor de Productos de la Tienda (Usa Flexbox para 6 por fila) */
+#productos-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px 0;
+}
+
+.tarjeta-producto {
+    /* CLAVE: Ancho base de 1/6 (16.66%) menos el gap */
+    flex: 1 1 calc(16.66% - 15px);
+    max-width: 180px;
+    min-width: 150px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+}
+
+.tarjeta-producto img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.btn-agregar {
+    background-color: #FFC107;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+/* Sección Reseñas (Usando Grid) */
+#reseñas-contenedor {
+    display: grid;
+    /* Grid Responsivo: Ancho mínimo de 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    background-color: #e8f5e9;
+}
+
+.reseña-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================
+   DISEÑO ESPECÍFICO DEL CARRITO DE COMPRAS (carrito.html)
+   ========================================================== */
+
+/* Contenedor de Productos del Carrito (Recuadro, Fondo Amarillo, Borde Verde) */
+#contenedor-carrito {
+    background-color: #fffacd; 
+    border: 3px solid #4CAF50; 
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px auto;
+
+    /* Configuración Grid para la disposición (más pequeños) */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    gap: 8px; 
+}
+
+/* Estilo de Cada Tarjeta de Producto en el Carrito (Muy Pequeño) */
+.producto-carrito {
+    background-color: white;
+    padding: 5px; 
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.producto-carrito img {
+    width: 50%;
+    height: 70px; 
+    object-fit:cover;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.producto-carrito h3 {
+    font-size: 0.8em;
+    margin: 3px 0;
+    line-height: 1.2;
+}
