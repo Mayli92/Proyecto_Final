@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 let imgProducto = document.createElement("img");
                 // Asume que images es un array y tiene al menos un elemento
                 imgProducto.src = elemento.images[0]; 
+                imgProducto.width = 100; // Por ejemplo, 100 píxeles de ancho
+                imgProducto.height = 70; // Por ejemplo, 70 píxeles de alto
 
                 let tituloProducto = document.createElement("h3");
                 tituloProducto.textContent = elemento.title;

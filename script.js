@@ -1,10 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Variables de estado global para la paginación y el carrito
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    let limiteProductos = 100; // Carga inicial de 100 productos (o el máximo que tenga la API)
+    let limiteProductos = 1000; // Máximo que la API devolverá por llamada, aunque usaremos paginación por scroll
     let productosSaltados = 0; // Contador de productos ya cargados (offset)
     let cargando = false; // Bandera para evitar peticiones duplicadas
     let todosCargados = false; // Indicador de finalización de productos
+
+    // 🟢 LISTA DE CATEGORÍAS A INCLUIR (¡Añadida!) 🟢
+    const categoriasDeseadas = [
+        'beauty', 
+        'fragrances', 
+        'skin-care', 
+        'womens-bags', 
+        'womens-dresses',
+        'womens-jewellery',
+        'womens-shoes',
+        'womens-watches'
+    ];
 
     const actualizarContador = () => {
         const contadorCarrito = document.getElementById("contador-carrito");
@@ -28,13 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
         actualizarContador();
     };
 
-    // FUNCIÓN MODIFICADA PARA USAR ASYNC/AWAIT, LIMIT Y SKIP
+    // FUNCIÓN MODIFICADA PARA USAR ASYNC/AWAIT, LIMIT Y SKIP CON FILTRADO LOCAL
     const renderizarProductos = async () => {
         if (cargando || todosCargados) return;
         cargando = true;
 
-        // Construye la URL con LIMIT y SKIP para la paginación
-        const url = `https://dummyjson.com/products/category/beauty?limit=${limiteProductos}&skip=${productosSaltados}`;
+        // Construye la URL con LIMIT y SKIP para la paginación (usando el endpoint general /products)
+        // NOTA: DummyJSON solo permite hasta 100 productos por llamada, no 1000.
+        const url = `https://dummyjson.com/products?limit=100&skip=${productosSaltados}`;
         
         let contenedorProductos = document.getElementById("productos-contenedor");
         if (!contenedorProductos) {
@@ -50,50 +63,57 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             const data = await response.json();
 
-            if (!data.products || data.products.length === 0) {
+            // 1. Verificar si hay productos y aplicar el filtro de categorías
+            const productosRecibidos = data.products || [];
+            
+            // 🟢 FILTRADO LOCAL DE PRODUCTOS POR CATEGORÍA 🟢
+            const productosFiltrados = productosRecibidos.filter(producto => 
+                categoriasDeseadas.includes(producto.category)
+            );
+            
+            // 2. Comprobar si se ha llegado al final de la API global
+            if (productosRecibidos.length === 0 || productosSaltados >= data.total) {
                 todosCargados = true;
                 contenedorProductos.insertAdjacentHTML('beforeend', '<p style="text-align:center; width: 100%; margin: 20px;">No hay más productos para cargar.</p>');
-            } else {
-                for (const producto of data.products) {
-                    let tarjetaProducto = document.createElement("article");
-                    tarjetaProducto.classList.add("tarjeta-producto");
-
-                    let imagenProducto = document.createElement("img");
-                    imagenProducto.src = producto.images[0];
-                    imagenProducto.alt = producto.description;
-
-                    let tituloProducto = document.createElement("h3");
-                    tituloProducto.classList.add("titulo-producto");
-                    tituloProducto.textContent = producto.title;
-
-                    let precioProducto = document.createElement("p");
-                    precioProducto.textContent = `$${producto.price.toFixed(2)}`;
-
-                    let btnAgregar = document.createElement("button");
-                    btnAgregar.textContent = "Agregar al Carrito";
-                    btnAgregar.classList.add("btn-agregar");
-
-                    btnAgregar.addEventListener("click", () => {
-                        agregarProducto(producto);
-                    });
-
-                    tarjetaProducto.appendChild(imagenProducto);
-                    tarjetaProducto.appendChild(tituloProducto);
-                    tarjetaProducto.appendChild(precioProducto);
-                    tarjetaProducto.appendChild(btnAgregar);
-
-                    contenedorProductos.appendChild(tarjetaProducto);
-                }
-
-                // Aumenta el offset para la siguiente llamada
-                productosSaltados += limiteProductos;
-                
-                // Si la cantidad de productos devueltos es menor que el límite, asumimos que hemos llegado al final
-                if (data.products.length < limiteProductos) {
-                    todosCargados = true;
-                    contenedorProductos.insertAdjacentHTML('beforeend', '<p style="text-align:center; width: 100%; margin: 20px;">No hay más productos para cargar.</p>');
-                }
+                cargando = false;
+                return;
             }
+            
+            // 3. Renderizar solo los productos que pasaron el filtro
+            for (const producto of productosFiltrados) {
+                let tarjetaProducto = document.createElement("article");
+                tarjetaProducto.classList.add("tarjeta-producto");
+
+                let imagenProducto = document.createElement("img");
+                imagenProducto.src = producto.images[0];
+                imagenProducto.alt = producto.description;
+
+                let tituloProducto = document.createElement("h3");
+                tituloProducto.classList.add("titulo-producto");
+                tituloProducto.textContent = producto.title;
+
+                let precioProducto = document.createElement("p");
+                precioProducto.textContent = `$${producto.price.toFixed(2)}`;
+
+                let btnAgregar = document.createElement("button");
+                btnAgregar.textContent = "Agregar al Carrito";
+                btnAgregar.classList.add("btn-agregar");
+
+                btnAgregar.addEventListener("click", () => {
+                    agregarProducto(producto);
+                });
+
+                tarjetaProducto.appendChild(imagenProducto);
+                tarjetaProducto.appendChild(tituloProducto);
+                tarjetaProducto.appendChild(precioProducto);
+                tarjetaProducto.appendChild(btnAgregar);
+
+                contenedorProductos.appendChild(tarjetaProducto);
+            }
+
+            // Aumenta el offset para la siguiente llamada (basado en lo que la API envió)
+            productosSaltados += productosRecibidos.length;
+            
         } catch (error) {
             console.error("Error al cargar los productos de la API:", error);
             if (productosSaltados === 0) {
@@ -111,13 +131,13 @@ document.addEventListener("DOMContentLoaded", () => {
         // Posición actual del scroll + altura de la ventana visible
         const posicionScroll = window.scrollY + window.innerHeight;
 
-        // Si estamos 100px cerca del final y no estamos cargando, solicitamos más productos
-        if (posicionScroll >= alturaDocumento - 100 && !cargando && !todosCargados) {
+        // Si estamos 10px cerca del final y no estamos cargando, solicitamos más productos
+        if (posicionScroll >= alturaDocumento - 10 && !cargando && !todosCargados) {
             renderizarProductos();
         }
     };
 
-    // 1. Carga inicial de los primeros 100 productos
+    // 1. Carga inicial
     renderizarProductos();
     
     // 2. Adjuntar el evento de scroll para la carga infinita
