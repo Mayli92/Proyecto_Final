@@ -262,3 +262,53 @@ section h2, .titulo-carrito {
         width: 100%; /* Botón al 100% del ancho en móvil */
     }
 }
+
+/* -------------------------- */
+/* --------- Footer --------- */
+/* -------------------------- */
+
+footer {
+    /* CAMBIO AQUÍ: Color de fondo verde */
+    background-color: #2ecc71; /* Un tono de verde esmeralda */ 
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+    border-top: 5px solid #27ae60; /* Un verde un poco más oscuro para el borde */
+}
+
+#publicidad-footer {
+    /* Manteniendo el color amarillo para la publicidad, pero ajustado para contrastar */
+    background-color: #f1c40f; 
+    color: #333;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#footer-content {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.social-icons a {
+    font-size: 1.8em;
+    margin: 0 10px;
+    transition: color 0.3s;
+    color: white; /* Color por defecto de los íconos */
+}
+
+.social-icons a:hover {
+    /* Cambiamos el hover a un color que contraste bien con el verde, como un azul oscuro */
+    color: #34495e; 
+}
+
+/* Media Query para escritorio (si ya existe) */
+@media (min-width: 600px) {
+    #footer-content {
+        flex-direction: row; 
+    }
+}
