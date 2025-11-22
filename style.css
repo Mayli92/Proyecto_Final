@@ -312,3 +312,79 @@ footer {
         flex-direction: row; 
     }
 }
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE FITNESS (Ajuste de Ancho)
+   ======================================= */
+
+.tabla-fitness {
+    width: 95%; /* Se aumenta un poco el ancho para las 4 columnas */
+    max-width: 900px; /* 🟢 Aumentado de 600px a 900px 🟢 */
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* El resto de las reglas para th, td, tr, etc., se mantienen igual */
+.tabla-fitness th, .tabla-fitness td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    /*... otras propiedades...*/
+}
+
+/* ... Mantén todas las demás reglas de CSS para la tabla y el media query ... */
+/* =======================================
+   ESTILOS PARA MENÚS DESPLEGABLES (DROPDOWNS)
+   ======================================= */
+
+/* 1. Posicionamiento del Contenedor Principal del Desplegable */
+nav ul li.dropdown {
+    position: relative; /* Clave para posicionar el menú desplegable (ul) con respecto a su padre (li) */
+    display: inline-block;
+}
+
+/* 2. Estilo del Contenido del Desplegable (El sub-menú) */
+.dropdown-content {
+    display: none; /* 🟢 Oculto por defecto 🟢 */
+    position: absolute; /* Posicionamiento absoluto respecto al .dropdown */
+    background-color: #333; /* Color de fondo del desplegable */
+    min-width: 220px; /* Asegura que haya suficiente espacio para el texto */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+    padding: 0;
+    margin: 0;
+    list-style: none; /* Remueve los puntos de lista */
+    top: 100%; /* Coloca el menú justo debajo del elemento padre */
+    left: 0;
+    border-top: 3px solid #4CAF50; /* Línea de color para un toque visual */
+}
+
+/* 3. Estilo de los Enlaces dentro del Desplegable */
+.dropdown-content li {
+    float: none; /* Asegura que los ítems se apilen verticalmente */
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.dropdown-content li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content li a {
+    color: white; /* Color del texto */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block; /* Ocupa todo el ancho */
+    white-space: nowrap; /* Evita que el texto se rompa */
+}
+
+.dropdown-content li a:hover {
+    background-color: #4CAF50; /* Resaltar al pasar el ratón */
+    color: #333;
+}
+
+/* 4. Mostrar el Menú al Pasar el Ratón (Hover) */
+nav ul li.dropdown:hover .dropdown-content {
+    display: block; /* 🟢 Mostrar el sub-menú 🟢 */
+}

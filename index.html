@@ -17,12 +17,45 @@
             <nav>
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#fitness">Fitness</a></li>
-                    <li><a href="#nutricion">Nutricion</a></li>
-                    <li><a href="#belleza">Belleza</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#fitness">Fitness</a>
+                        <ul class="dropdown-content">
+                            <li><a href="#rutinas-personalizadas">Rutinas Personalizadas</a></li>
+                            <li><a href="#tecnicas-correctas">Guía sobre Técnicas Correctas</a></li>
+                            <li><a href="#motivacion-constante">Motivación Constante</a></li>
+                            <li><a href="#disciplinas-diversas">Información sobre Diversas Disciplinas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#nutricion">Nutrición</a>
+                        <ul class="dropdown-content">
+                            <li><a href="#recetas">Recetas Saludables</a></li>
+                            <li><a href="#macronutrientes">Macronutrientes y Micronutrientes</a></li>
+                            <li><a href="#alimentacion-consciente">Alimentación Consciente</a></li>
+                            <li><a href="#mitos-dietas">Mitos y Verdades sobre las Dietas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#belleza">Belleza</a>
+                        <ul class="dropdown-content">
+                            <li><a href="#maquillaje-piel">Maquillaje para Piel</a></li>
+                            <li><a href="#mascarillas-faciales">Mascarillas Faciales</a></li>
+                            <li><a href="#cremas-naturales">Cremas Corporales Naturales</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="#contacto">Contacto</a></li>
                     <li><a href="#productos-seccion">Nuestros Productos</a></li>
-                    <li> <a href="carrito.html">  <span id="contador-carrito">0</span> </a> </li>
+                    
+                    <li> 
+                        <a href="carrito.html"> 
+                            <i class="fa-solid fa-cart-shopping"></i> 
+                            <span id="contador-carrito">0</span> 
+                        </a> 
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -43,15 +76,226 @@
                 <li>
                 <a href="#rutinas-personalizadas">Rutinas Personalizadas</a>
                 </li>
+                <table class="tabla-fitness">
+        <thead>
+            <tr>
+                <th>Nivel</th>
+                <th>Frecuencia Semanal</th>
+                <th>Duración Estimada</th>
+                <th>Ejercicios Recomendados</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Principiante</td>
+                <td>3 días</td>
+                <td>30 minutos</td>
+                <td>Caminatas, sentadillas con peso corporal, plancha (30s), máquinas de gimnasio.</td>
+            </tr>
+            <tr>
+                <td>Intermedio</td>
+                <td>4-5 días</td>
+                <td>45-60 minutos</td>
+                <td>Entrenamiento de fuerza con pesas (mancuernas/barras), HIIT de baja intensidad, yoga o pilates.</td>
+            </tr>
+            <tr>
+            <td>Avanzado</td>
+                <td>5-6 días</td>
+                <td>60+ minutos</td>
+                <td>Levantamiento Olímpico, entrenamiento de alta intensidad (HIIT), circuitos con superseries, running o natación de larga distancia.</td>
+            </tr>
+        </tbody>
+    </table>
                 <li>
                 <a href="https://www.simplyfitness.com">Guías sobre Técnicas Correctas</a>
                 </li>
+                <p>Para entrenar con técnicas correctas de fitness, comienza por calentar, enfocarte en la forma correcta para evitar lesiones, y aumentar la intensidad gradualmente. Es fundamental escuchar a tu cuerpo y, si es necesario, pedir ayuda a un profesional. </p>
+                <table class="tabla-fitness tabla-consejos">
+        <thead>
+            <tr>
+                <th>Fase del Entrenamiento</th>
+                <th>Consejo Clave</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Antes de empezar</th>
+                <td>
+                    <ul>
+                        <li>**Define tus objetivos:** Establece metas claras y realistas.</li>
+                        <li>**Calienta adecuadamente:** Realiza ejercicios de calentamiento con bajo peso.</li>
+                        <li>**Consulta a un profesional:** Si tienes lesiones o enfermedades, busca asesoría médica o de un entrenador.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Durante el entrenamiento</th>
+                <td>
+                    <ul>
+                        <li>**Prioriza la técnica:** Mantén una buena postura y utiliza toda la amplitud de movimiento.</li>
+                        <li>**Ajusta el peso:** Reduce el peso o repeticiones si no puedes mantener la forma correcta.</li>
+                        <li>**Usa el peso corporal:** Empieza con sentadillas, zancadas y planchas para construir fuerza.</li>
+                        <li>**Mantén el core fuerte:** Un núcleo fuerte mejora la eficiencia.</li>
+                        <li>**Sé consciente del entorno:** Respeta el espacio en el gimnasio.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Después del entrenamiento y para la motivación</th>
+                <td>
+                    <ul>
+                        <li>**Escucha a tu cuerpo:** Presta atención a las señales para evitar sobreentrenamiento.</li>
+                        <li>**Estira:** Estira los músculos después de un entrenamiento para mantener la flexibilidad.</li>
+                        <li>**Progresa gradualmente:** Aumenta la intensidad lentamente (ej. 10% semanal, según Mayo Clinic).</li>
+                        <li>**Sé constante y paciente:** Los resultados se obtienen a largo plazo con dedicación.</li>
+                        <li>**Considera la ayuda de un profesional:** Pide ayuda a un entrenador si tienes dudas sobre la técnica.</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
                 <li>
                 <a href="#motivacion-fitness">Motivación Constante</a>
                 </li>
+                <p>Para motivarse hacia una vida saludable, establece metas pequeñas y alcanzables, y crea una rutina con ejercicios diarios, una alimentación balanceada rica en verduras y grasas saludables, y un descanso adecuado. Prioriza tu salud mental meditando, relajándote y fortaleciendo tus relaciones sociales</p>
+                <table class="tabla-fitness">
+        </table>
+    
+    <table class="tabla-fitness tabla-bienestar">
+        <thead>
+            <tr>
+                <th>Área de Bienestar</th>
+                <th>Consejo Específico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="grupo-header">
+                <td colspan="2">Bienestar Físico</td>
+            </tr>
+            <tr>
+                <td rowspan="6" class="disciplina-grupo">Físico</td>
+                <td>**Muévete diariamente:** Incorpora actividad física regular y muévete más durante el día (ej. usar escaleras).</td>
+            </tr>
+            <tr>
+                <td>**Adopta una alimentación saludable:** Dieta balanceada con abundantes verduras, frutas y grasas saludables (aguacate, aceite de oliva).</td>
+            </tr>
+            <tr>
+                <td>**Hidrátate adecuadamente:** Bebe suficiente agua a lo largo del día para mantener la energía y la vitalidad.</td>
+            </tr>
+            <tr>
+                <td>**Duerme lo suficiente:** Establece una rutina de descanso que te permita dormir **7 a 8 horas diarias**.</td>
+            </tr>
+            <tr>
+                <td>**Evita hábitos tóxicos:** Reduce o elimina el consumo de alcohol, tabaco y drogas.</td>
+            </tr>
+            <tr>
+                <td>**Hazte chequeos preventivos:** Realiza revisiones médicas periódicas para detectar cualquier alteración a tiempo.</td>
+            </tr>
+
+            <tr class="grupo-header">
+                <td colspan="2">Bienestar Mental</td>
+            </tr>
+            <tr>
+                <td rowspan="7" class="disciplina-grupo">Mental</td>
+                <td>**Prioriza tu salud mental:** Es fundamental cuidarla tanto como a tu cuerpo.</td>
+            </tr>
+            <tr>
+                <td>**Maneja tus pensamientos:** Intenta que sean realistas y favorables. Lee cosas que te inspiren y practica afirmaciones.</td>
+            </tr>
+            <tr>
+                <td>**Relájate y medita:** Dedica unos minutos al día para reducir el estrés.</td>
+            </tr>
+            <tr>
+                <td>**Fomenta tus relaciones:** Mantén un círculo social cercano y saludable. Comunícate y comparte con tus seres queridos.</td>
+            </tr>
+            <tr>
+                <td>**Aprende a pedir ayuda:** No dudes en buscar apoyo cuando lo necesites.</td>
+            </tr>
+            <tr>
+                <td>**Establece metas vitales:** Tener propósitos a largo plazo te dará motivación y dirección.</td>
+            </tr>
+            <tr>
+                <td>**Busca el equilibrio:** Encuentra un balance entre tu vida personal, laboral y académica.</td>
+            </tr>
+        </tbody>
+    </table>
                 <li>
                 <a href="#disciplinas-varias">Información sobre diversas Disciplinas</a>
+    
                 </li>
+                <p>Las disciplinas saludables incluyen la actividad física regular (caminar, nadar, deportes), una alimentación balanceada, un sueño reparador y el manejo del estrés. Fomentan el bienestar físico y mental, fortalecen el cuerpo, previenen enfermedades crónicas como la diabetes y la hipertensión, y mejoran el estado de ánimo. La disciplina es clave para mantener estos hábitos a largo plazo</p>
+                <table class="tabla-fitness tabla-disciplinas">
+        <thead>
+            <tr>
+                <th colspan="2">Disciplina / Hábito</th>
+                <th>Beneficios Clave</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="grupo-header">
+                <td colspan="3">Disciplinas de Actividad Física</td>
+            </tr>
+            <tr>
+                <td rowspan="5" class="disciplina-grupo">Actividad Física</td>
+                <td>**Correr/Running y Caminar**</td>
+                <td>Mejoran la salud cardiovascular, ayudan al control del peso y fortalecen los huesos y músculos.</td>
+            </tr>
+            <tr>
+                <td>**Natación**</td>
+                <td>Ejercicio de bajo impacto, mejora la capacidad pulmonar, la circulación sanguínea y tonifica todo el cuerpo.</td>
+            </tr>
+            <tr>
+                <td>**Ciclismo**</td>
+                <td>Fortalece la parte inferior del cuerpo, mejora la resistencia cardiovascular.</td>
+            </tr>
+            <tr>
+                <td>**Fitness Funcional/Resistencia**</td>
+                <td>Mejora la fuerza muscular y la resistencia general, fundamental para tareas cotidianas y prevención de fatiga.</td>
+            </tr>
+            <tr>
+                <td>**Deportes de Equipo**</td>
+                <td>Fomentan el bienestar social y mental además de los beneficios físicos.</td>
+            </tr>
+
+            <tr class="grupo-header">
+                <td colspan="3">Disciplinas Mente-Cuerpo</td>
+            </tr>
+            <tr>
+                <td rowspan="3" class="disciplina-grupo">Mente-Cuerpo</td>
+                <td>**Yoga**</td>
+                <td>Ayuda a manejar el estrés, mejora la flexibilidad, la fuerza, el equilibrio y favorece un sueño de calidad.</td>
+            </tr>
+            <tr>
+                <td>**Tai Chi**</td>
+                <td>Mejora el equilibrio, la flexibilidad y la fuerza muscular (ejercicio de bajo impacto).</td>
+            </tr>
+            <tr>
+                <td>**Meditación**</td>
+                <td>Reduce el estrés, la ansiedad, y mejora la concentración y la salud mental.</td>
+            </tr>
+
+            <tr class="grupo-header">
+                <td colspan="3">Hábitos Fundamentales</td>
+            </tr>
+            <tr>
+                <td rowspan="3" class="disciplina-grupo">Hábitos</td>
+                <td>**Alimentación Equilibrada**</td>
+                <td>Crucial para el bienestar general y el control del peso (dieta rica en nutrientes).</td>
+            </tr>
+            <tr>
+                <td>**Sueño de Calidad**</td>
+                <td>Esencial para la recuperación física y la salud mental (horario constante).</td>
+            </tr>
+            <tr>
+                <td>**Manejo del Estrés**</td>
+                <td>Cuidado de la salud mental mediante meditación, pasatiempos o socialización.</td>
+            </tr>
+            
+            <tr>
+                <td colspan="3" class="nota-clave">La clave para obtener beneficios es la **práctica constante y regular**, adaptándolas a las necesidades individuales.</td>
+            </tr>
+        </tbody>
+    </table>
             </ul>
             </section>
 
