@@ -640,3 +640,190 @@ nav ul li.dropdown:hover .dropdown-content {
     background-color: #a5d6a7; /* Verde intermedio */
     font-weight: normal; /* Para que solo VERDADERO esté en negrita, no toda la explicación */
 }
+
+/* =======================================
+   ESTILOS PARA EL CUADRO DE SALUD MENTAL
+   ======================================= */
+
+.cuadro-salud-mental {
+    width: 100%;
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 30px;
+    border: 3px solid #7e57c2; /* Borde violeta medio */
+    background-color: #f3e5f5; /* Fondo lavanda muy claro */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.cuadro-salud-mental h3 {
+    color: #4527a0; /* Violeta oscuro para el título principal */
+    border-bottom: 2px solid #b39ddb;
+    padding-bottom: 10px;
+    margin-top: 0;
+    text-align: center;
+}
+
+.cuadro-salud-mental h4 {
+    color: #673ab7; /* Violeta intermedio para los subtítulos */
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.cuadro-salud-mental p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.cuadro-salud-mental ul {
+    list-style-type: square; /* Lista desordenada */
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+.cuadro-salud-mental li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE MASCARILLAS
+   ======================================= */
+
+.tabla-mascarillas {
+    width: 100%;
+    max-width: 950px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.9em;
+}
+
+.tabla-mascarillas th, 
+.tabla-mascarillas td {
+    border: 1px solid #f0f0f0;
+    padding: 12px 10px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.4;
+}
+
+.tabla-mascarillas thead th {
+    background-color: #f48fb1; /* Rosa suave */
+    color: white;
+    text-align: center;
+}
+
+/* Fondo para la primera columna para destacar el tipo de mascarilla */
+.tabla-mascarillas tbody td:first-child {
+    background-color: #fce4ec; /* Rosa muy claro */
+    font-weight: bold;
+}
+
+/* Estilo para las filas impares */
+.tabla-mascarillas tbody tr:nth-child(odd) {
+    background-color: #fffafa; /* Casi blanco */
+}
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE HIDRATANTES CORPORALES
+   ======================================= */
+
+.tabla-hidratantes {
+    width: 100%;
+    max-width: 950px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.95em;
+}
+
+.tabla-hidratantes th, 
+.tabla-hidratantes td {
+    border: 1px solid #c8e6c9; /* Borde verde muy claro */
+    padding: 12px 10px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.4;
+}
+
+.tabla-hidratantes thead th {
+    background-color: #388e3c; /* Verde oscuro para el encabezado */
+    color: white;
+    text-align: center;
+}
+
+/* Fondo para la primera columna para destacar el tipo de producto */
+.tabla-hidratantes tbody td:first-child {
+    background-color: #e8f5e9; /* Verde más claro */
+    font-weight: bold;
+    width: 20%;
+}
+
+/* Estilo para las filas impares */
+.tabla-hidratantes tbody tr:nth-child(odd) {
+    background-color: #f7fcf7; /* Fondo sutilmente diferente */
+}
+
+/* Color para resaltar los ingredientes clave en la tabla */
+.tabla-hidratantes td strong {
+    color: #1b5e20; /* Tono de verde muy oscuro para énfasis */
+}
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE INGREDIENTES ACTIVOS
+   ======================================= */
+
+.tabla-ingredientes-activos {
+    width: 100%;
+    max-width: 950px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.95em;
+}
+
+.tabla-ingredientes-activos th, 
+.tabla-ingredientes-activos td {
+    border: 1px solid #c8e6c9; /* Borde verde muy claro */
+    padding: 15px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.tabla-ingredientes-activos thead th {
+    background-color: #388e3c; /* Verde oscuro para el encabezado */
+    color: white;
+    text-align: center;
+}
+
+/* Estilos de encabezado de grupo (Subtítulos) */
+.tabla-ingredientes-activos .grupo-header td {
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #a5d6a7; /* Línea separadora verde */
+    font-size: 1.05em;
+}
+
+/* Colores de fondo específicos para cada grupo */
+.tabla-ingredientes-activos .calmante-header td {
+    background-color: #e8f5e9; /* Verde más pálido */
+}
+.tabla-ingredientes-activos .reparadora-header td {
+    background-color: #dcedc8; /* Verde ligeramente diferente */
+}
+.tabla-ingredientes-activos .antiedad-header td {
+    background-color: #c5e1a5; /* Verde lima muy claro */
+}
+
+/* Estilo para la primera columna para destacar el enfoque */
+.tabla-ingredientes-activos tbody td:first-child {
+    background-color: #f7fcf7;
+    font-weight: bold;
+    width: 20%;
+    text-align: center;
+}
