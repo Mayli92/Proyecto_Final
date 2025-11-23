@@ -455,3 +455,188 @@ nav ul li.dropdown:hover .dropdown-content {
     MANTÉN las reglas CSS de .cuadro-receta, .resumen-receta y .receta-contenido-plano
     para el resto del formato (padding, márgenes, etc.).
 */
+
+/* =======================================
+   ESTILOS ESPECÍFICOS PARA RECETA PARA CELIACOS (AZUL CELESTE)
+   ======================================= */
+
+.cuadro-receta-celiacos {
+    background-color: #E0F7FA; /* Fondo celeste/cian muy claro */
+    border: 3px solid #00BCD4; /* Borde azul/cian fuerte */
+}
+
+/* Sobrescribir colores de títulos para el cuadro celeste */
+.cuadro-receta-celiacos h3 {
+    color: #00BCD4; /* Título color azul/cian fuerte */
+    border-bottom: 1px solid #B2EBF2; /* Línea de separación más clara */
+}
+
+.cuadro-receta-celiacos h4 {
+    color: #00BCD4; /* Subtítulos color azul/cian fuerte */
+    border-bottom: 1px solid #00BCD4;
+}
+
+/*
+    Asegúrate de que los estilos base de .cuadro-receta y .receta-contenido-plano
+    se mantengan para el padding, márgenes y la disposición general del texto.
+*/
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE NUTRIENTES
+   ======================================= */
+
+.tabla-nutrientes {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.95em;
+}
+
+.tabla-nutrientes th, 
+.tabla-nutrientes td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.tabla-nutrientes thead th {
+    background-color: #ff9800; /* Color naranja de Nutrición */
+    color: white;
+    text-align: center;
+}
+
+/* Estilos para las cabeceras de grupo (Macro / Micro) */
+.tabla-nutrientes .grupo-header td {
+    background-color: #ffe0b2; /* Naranja muy claro */
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #ffb74d;
+}
+
+/* Estilo para la columna que agrupa (Macronutrientes/Micronutrientes) */
+.tabla-nutrientes .nutriente-principal {
+    background-color: #fff3e0;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    width: 12%;
+}
+
+/* Estilo para la columna de unidad de medida */
+.tabla-nutrientes .unidad-medida {
+    background-color: #fbe9e7; /* Fondo ligeramente diferente para destacar */
+    font-style: italic;
+    text-align: center;
+    vertical-align: middle;
+    width: 10%;
+}
+
+/* =======================================
+   ESTILOS PARA EL CUADRO DE ALIMENTACIÓN CONSCIENTE
+   ======================================= */
+
+.cuadro-alimentacion-consciente {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    border: 3px solid #ffab91; /* Borde suave color salmón/coral */
+    background-color: #fffaf0; /* Fondo muy claro, casi blanco, pero cálido */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.cuadro-alimentacion-consciente h3 {
+    color: #ff5722; /* Título color coral fuerte */
+    border-bottom: 2px solid #ffccbc;
+    padding-bottom: 10px;
+    margin-top: 0;
+    text-align: center;
+}
+
+.cuadro-alimentacion-consciente h4 {
+    color: #ff7043; /* Subtítulo para la lista principal */
+    margin-top: 20px;
+}
+
+/* Estilo para la lista principal numerada */
+.cuadro-alimentacion-consciente .lista-consciente {
+    padding-left: 20px;
+    line-height: 1.5;
+}
+
+/* Estilo para los ítems de las sublistas (viñetas) */
+.cuadro-alimentacion-consciente ul {
+    list-style-type: disc; /* Viñetas */
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.cuadro-alimentacion-consciente li {
+    margin-bottom: 5px;
+}
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE MITOS Y VERDADES DETALLADA
+   ======================================= */
+
+.tabla-mitos-detallada {
+    width: 100%;
+    max-width: 950px; /* Le damos un poco más de ancho para la explicación */
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-mitos-detallada th, 
+.tabla-mitos-detallada td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.4;
+}
+
+.tabla-mitos-detallada thead th {
+    background-color: #ff9800; /* Color naranja de Nutrición */
+    color: white;
+    text-align: center;
+}
+
+/* Estilos de encabezado de grupo (Mitos/Verdades) */
+.tabla-mitos-detallada .grupo-header td {
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border: none;
+    font-size: 1.1em;
+}
+
+.tabla-mitos-detallada .mito-header td {
+    background-color: #ffcdd2; /* Rojo claro para Mitos */
+    color: #c62828; 
+    border-bottom: 2px solid #e57373;
+}
+
+.tabla-mitos-detallada .verdad-header td {
+    background-color: #c8e6c9; /* Verde claro para Verdades */
+    color: #2e7d32; 
+    border-bottom: 2px solid #81c784;
+}
+
+/* Estilos para las explicaciones */
+.tabla-mitos-detallada .estado-falso {
+    background-color: #ef9a9a; /* Rojo intermedio */
+    font-weight: normal; /* Para que solo FALSO esté en negrita, no toda la explicación */
+}
+
+.tabla-mitos-detallada .estado-verdadero {
+    background-color: #a5d6a7; /* Verde intermedio */
+    font-weight: normal; /* Para que solo VERDADERO esté en negrita, no toda la explicación */
+}
