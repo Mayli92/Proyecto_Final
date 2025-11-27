@@ -175,3 +175,655 @@ section h2, .titulo-carrito {
     margin: 3px 0;
     line-height: 1.2;
 }
+/* =======================================
+   ESTILOS PARA LA SECCIÓN DE CONTACTO
+   ======================================= */
+
+#contacto {
+    padding: 40px 20px;
+}
+
+/* Contenedor del Formulario: Recuadro, Fondo Amarillo y Centrado */
+#contacto form {
+    /* Fondo Amarillo Claro y Borde Negro */
+    background-color: #fffacd; /* Amarillo claro */
+    border: 1px solid #333; /* Borde negro */
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 600px; /* Ancho máximo para centrar */
+    margin: 0 auto; /* 🟢 CLAVE para centrar el recuadro 🟢 */
+
+    /* Configuración Grid para el diseño del formulario */
+    display: grid;
+    /* Dos columnas: una para labels (auto), otra para inputs (1fr) */
+    grid-template-columns: auto 1fr; 
+    gap: 15px; /* Espaciado entre elementos */
+    align-items: start; /* Alineación vertical */
+}
+
+/* Estilo de las Etiquetas (Labels) en Negrita */
+#contacto label {
+    font-weight: bold; /* 🟢 Negrita 🟢 */
+    padding-top: 5px; /* Pequeño ajuste para alineación con el input */
+}
+
+/* Estilo de los Campos de Entrada y Textarea */
+#contacto input[type="text"],
+#contacto input[type="email"],
+#contacto textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Asegura que el padding no desborde el ancho */
+}
+
+/* El campo de mensaje debe ocupar ambas columnas si es necesario */
+#contacto textarea {
+    grid-column: 1 / 3; /* Ocupa desde la columna 1 hasta el final */
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+/* Estilo del Botón de Enviar (Verde con Borde Negro) */
+#contacto button[type="submit"] {
+    grid-column: 1 / 3; /* Centrar el botón ocupando todo el ancho */
+    background-color: #4CAF50; /* 🟢 Color Verde 🟢 */
+    color: white;
+    border: 2px solid #333; /* 🟢 Borde Negro 🟢 */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    justify-self: center; /* Centra el botón horizontalmente dentro de su área */
+    width: 50%; /* Le da un ancho definido para que se vea centrado */
+}
+
+#contacto button[type="submit"]:hover {
+    background-color: #388e3c;
+}
+
+/* MEDIA QUERY: Diseño Móvil (Hace que todo sea una sola columna) */
+@media (max-width: 650px) {
+    #contacto form {
+        grid-template-columns: 1fr; /* Una sola columna en móviles */
+        padding: 15px;
+    }
+    
+    #contacto label,
+    #contacto input,
+    #contacto textarea,
+    #contacto button {
+        grid-column: 1 / 2; /* Asegura que todo ocupe el ancho completo */
+    }
+
+    #contacto button[type="submit"] {
+        width: 100%; /* Botón al 100% del ancho en móvil */
+    }
+}
+
+/* -------------------------- */
+/* --------- Footer --------- */
+/* -------------------------- */
+
+footer {
+    /* CAMBIO AQUÍ: Color de fondo verde */
+    background-color: #2ecc71; /* Un tono de verde esmeralda */ 
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+    border-top: 5px solid #27ae60; /* Un verde un poco más oscuro para el borde */
+}
+
+#publicidad-footer {
+    /* Manteniendo el color amarillo para la publicidad, pero ajustado para contrastar */
+    background-color: #f1c40f; 
+    color: #333;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#footer-content {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.social-icons a {
+    font-size: 1.8em;
+    margin: 0 10px;
+    transition: color 0.3s;
+    color: white; /* Color por defecto de los íconos */
+}
+
+.social-icons a:hover {
+    /* Cambiamos el hover a un color que contraste bien con el verde, como un azul oscuro */
+    color: #34495e; 
+}
+
+/* Media Query para escritorio (si ya existe) */
+@media (min-width: 600px) {
+    #footer-content {
+        flex-direction: row; 
+    }
+}
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE FITNESS (Ajuste de Ancho)
+   ======================================= */
+
+.tabla-fitness {
+    width: 95%; /* Se aumenta un poco el ancho para las 4 columnas */
+    max-width: 900px; /* 🟢 Aumentado de 600px a 900px 🟢 */
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* El resto de las reglas para th, td, tr, etc., se mantienen igual */
+.tabla-fitness th, .tabla-fitness td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    /*... otras propiedades...*/
+}
+
+/* ... Mantén todas las demás reglas de CSS para la tabla y el media query ... */
+/* =======================================
+   ESTILOS PARA MENÚS DESPLEGABLES (DROPDOWNS)
+   ======================================= */
+
+/* 1. Posicionamiento del Contenedor Principal del Desplegable */
+nav ul li.dropdown {
+    position: relative; /* Clave para posicionar el menú desplegable (ul) con respecto a su padre (li) */
+    display: inline-block;
+}
+
+/* 2. Estilo del Contenido del Desplegable (El sub-menú) */
+.dropdown-content {
+    display: none; /* 🟢 Oculto por defecto 🟢 */
+    position: absolute; /* Posicionamiento absoluto respecto al .dropdown */
+    background-color: #333; /* Color de fondo del desplegable */
+    min-width: 220px; /* Asegura que haya suficiente espacio para el texto */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+    padding: 0;
+    margin: 0;
+    list-style: none; /* Remueve los puntos de lista */
+    top: 100%; /* Coloca el menú justo debajo del elemento padre */
+    left: 0;
+    border-top: 3px solid #4CAF50; /* Línea de color para un toque visual */
+}
+
+/* 3. Estilo de los Enlaces dentro del Desplegable */
+.dropdown-content li {
+    float: none; /* Asegura que los ítems se apilen verticalmente */
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.dropdown-content li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content li a {
+    color: white; /* Color del texto */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block; /* Ocupa todo el ancho */
+    white-space: nowrap; /* Evita que el texto se rompa */
+}
+
+.dropdown-content li a:hover {
+    background-color: #4CAF50; /* Resaltar al pasar el ratón */
+    color: #333;
+}
+
+/* 4. Mostrar el Menú al Pasar el Ratón (Hover) */
+nav ul li.dropdown:hover .dropdown-content {
+    display: block; /* 🟢 Mostrar el sub-menú 🟢 */
+}
+
+
+/* =======================================
+   ESTILOS PARA EL CUADRO DE RECETA (Versión Plana)
+   ======================================= */
+
+.cuadro-receta {
+    border: 1px solid #c8e6c9; /* Borde suave */
+    background-color: #e8f5e9; /* Fondo verde muy claro para recetas */
+    padding: 30px;
+    margin: 30px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 700px; /* Reducimos el ancho un poco ya que el contenido es lineal */
+    text-align: left;
+}
+
+.cuadro-receta h3 {
+    color: #388e3c; /* Verde oscuro para el título de la receta */
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #a5d6a7;
+}
+
+.cuadro-receta h4 {
+    color: #4CAF50;
+    margin-top: 20px;
+    border-bottom: 1px solid #4CAF50;
+    padding-bottom: 5px;
+}
+
+.cuadro-receta .resumen-receta {
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.receta-contenido-plano p {
+    line-height: 1.6; /* Mejora la legibilidad del texto con saltos de línea */
+    margin-bottom: 15px;
+}
+
+/* =======================================
+   ESTILOS ESPECÍFICOS PARA RECETA DE DIABETES (AMARILLO)
+   ======================================= */
+
+.cuadro-receta-diabetes {
+    background-color: #FFFFE0; /* Fondo amarillo muy claro */
+    border: 3px solid #FFC107; /* Borde amarillo fuerte */
+}
+
+/* Sobrescribir colores de títulos para el cuadro amarillo */
+.cuadro-receta-diabetes h3 {
+    color: #FFC107; /* Título color amarillo fuerte */
+    border-bottom: 1px solid #FFECB3; /* Línea de separación más clara */
+}
+
+.cuadro-receta-diabetes h4 {
+    color: #FFC107; /* Subtítulos color amarillo fuerte */
+    border-bottom: 1px solid #FFC107;
+}
+
+/*
+    MANTÉN las reglas CSS de .cuadro-receta, .resumen-receta y .receta-contenido-plano
+    para el resto del formato (padding, márgenes, etc.).
+*/
+
+/* =======================================
+   ESTILOS ESPECÍFICOS PARA RECETA PARA CELIACOS (AZUL CELESTE)
+   ======================================= */
+
+.cuadro-receta-celiacos {
+    background-color: #E0F7FA; /* Fondo celeste/cian muy claro */
+    border: 3px solid #00BCD4; /* Borde azul/cian fuerte */
+}
+
+/* Sobrescribir colores de títulos para el cuadro celeste */
+.cuadro-receta-celiacos h3 {
+    color: #00BCD4; /* Título color azul/cian fuerte */
+    border-bottom: 1px solid #B2EBF2; /* Línea de separación más clara */
+}
+
+.cuadro-receta-celiacos h4 {
+    color: #00BCD4; /* Subtítulos color azul/cian fuerte */
+    border-bottom: 1px solid #00BCD4;
+}
+
+/*
+    Asegúrate de que los estilos base de .cuadro-receta y .receta-contenido-plano
+    se mantengan para el padding, márgenes y la disposición general del texto.
+*/
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE NUTRIENTES
+   ======================================= */
+
+.tabla-nutrientes {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.95em;
+}
+
+.tabla-nutrientes th, 
+.tabla-nutrientes td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.tabla-nutrientes thead th {
+    background-color: #ff9800; /* Color naranja de Nutrición */
+    color: white;
+    text-align: center;
+}
+
+/* Estilos para las cabeceras de grupo (Macro / Micro) */
+.tabla-nutrientes .grupo-header td {
+    background-color: #ffe0b2; /* Naranja muy claro */
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #ffb74d;
+}
+
+/* Estilo para la columna que agrupa (Macronutrientes/Micronutrientes) */
+.tabla-nutrientes .nutriente-principal {
+    background-color: #fff3e0;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    width: 12%;
+}
+
+/* Estilo para la columna de unidad de medida */
+.tabla-nutrientes .unidad-medida {
+    background-color: #fbe9e7; /* Fondo ligeramente diferente para destacar */
+    font-style: italic;
+    text-align: center;
+    vertical-align: middle;
+    width: 10%;
+}
+
+/* =======================================
+   ESTILOS PARA EL CUADRO DE ALIMENTACIÓN CONSCIENTE
+   ======================================= */
+
+.cuadro-alimentacion-consciente {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    border: 3px solid #ffab91; /* Borde suave color salmón/coral */
+    background-color: #fffaf0; /* Fondo muy claro, casi blanco, pero cálido */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.cuadro-alimentacion-consciente h3 {
+    color: #ff5722; /* Título color coral fuerte */
+    border-bottom: 2px solid #ffccbc;
+    padding-bottom: 10px;
+    margin-top: 0;
+    text-align: center;
+}
+
+.cuadro-alimentacion-consciente h4 {
+    color: #ff7043; /* Subtítulo para la lista principal */
+    margin-top: 20px;
+}
+
+/* Estilo para la lista principal numerada */
+.cuadro-alimentacion-consciente .lista-consciente {
+    padding-left: 20px;
+    line-height: 1.5;
+}
+
+/* Estilo para los ítems de las sublistas (viñetas) */
+.cuadro-alimentacion-consciente ul {
+    list-style-type: disc; /* Viñetas */
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.cuadro-alimentacion-consciente li {
+    margin-bottom: 5px;
+}
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE MITOS Y VERDADES DETALLADA
+   ======================================= */
+
+.tabla-mitos-detallada {
+    width: 100%;
+    max-width: 950px; /* Le damos un poco más de ancho para la explicación */
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-mitos-detallada th, 
+.tabla-mitos-detallada td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.4;
+}
+
+.tabla-mitos-detallada thead th {
+    background-color: #ff9800; /* Color naranja de Nutrición */
+    color: white;
+    text-align: center;
+}
+
+/* Estilos de encabezado de grupo (Mitos/Verdades) */
+.tabla-mitos-detallada .grupo-header td {
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border: none;
+    font-size: 1.1em;
+}
+
+.tabla-mitos-detallada .mito-header td {
+    background-color: #ffcdd2; /* Rojo claro para Mitos */
+    color: #c62828; 
+    border-bottom: 2px solid #e57373;
+}
+
+.tabla-mitos-detallada .verdad-header td {
+    background-color: #c8e6c9; /* Verde claro para Verdades */
+    color: #2e7d32; 
+    border-bottom: 2px solid #81c784;
+}
+
+/* Estilos para las explicaciones */
+.tabla-mitos-detallada .estado-falso {
+    background-color: #ef9a9a; /* Rojo intermedio */
+    font-weight: normal; /* Para que solo FALSO esté en negrita, no toda la explicación */
+}
+
+.tabla-mitos-detallada .estado-verdadero {
+    background-color: #a5d6a7; /* Verde intermedio */
+    font-weight: normal; /* Para que solo VERDADERO esté en negrita, no toda la explicación */
+}
+
+/* =======================================
+   ESTILOS PARA EL CUADRO DE SALUD MENTAL
+   ======================================= */
+
+.cuadro-salud-mental {
+    width: 100%;
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 30px;
+    border: 3px solid #7e57c2; /* Borde violeta medio */
+    background-color: #f3e5f5; /* Fondo lavanda muy claro */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.cuadro-salud-mental h3 {
+    color: #4527a0; /* Violeta oscuro para el título principal */
+    border-bottom: 2px solid #b39ddb;
+    padding-bottom: 10px;
+    margin-top: 0;
+    text-align: center;
+}
+
+.cuadro-salud-mental h4 {
+    color: #673ab7; /* Violeta intermedio para los subtítulos */
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.cuadro-salud-mental p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.cuadro-salud-mental ul {
+    list-style-type: square; /* Lista desordenada */
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+.cuadro-salud-mental li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE MASCARILLAS
+   ======================================= */
+
+.tabla-mascarillas {
+    width: 100%;
+    max-width: 950px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.9em;
+}
+
+.tabla-mascarillas th, 
+.tabla-mascarillas td {
+    border: 1px solid #f0f0f0;
+    padding: 12px 10px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.4;
+}
+
+.tabla-mascarillas thead th {
+    background-color: #f48fb1; /* Rosa suave */
+    color: white;
+    text-align: center;
+}
+
+/* Fondo para la primera columna para destacar el tipo de mascarilla */
+.tabla-mascarillas tbody td:first-child {
+    background-color: #fce4ec; /* Rosa muy claro */
+    font-weight: bold;
+}
+
+/* Estilo para las filas impares */
+.tabla-mascarillas tbody tr:nth-child(odd) {
+    background-color: #fffafa; /* Casi blanco */
+}
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE HIDRATANTES CORPORALES
+   ======================================= */
+
+.tabla-hidratantes {
+    width: 100%;
+    max-width: 950px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.95em;
+}
+
+.tabla-hidratantes th, 
+.tabla-hidratantes td {
+    border: 1px solid #c8e6c9; /* Borde verde muy claro */
+    padding: 12px 10px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.4;
+}
+
+.tabla-hidratantes thead th {
+    background-color: #388e3c; /* Verde oscuro para el encabezado */
+    color: white;
+    text-align: center;
+}
+
+/* Fondo para la primera columna para destacar el tipo de producto */
+.tabla-hidratantes tbody td:first-child {
+    background-color: #e8f5e9; /* Verde más claro */
+    font-weight: bold;
+    width: 20%;
+}
+
+/* Estilo para las filas impares */
+.tabla-hidratantes tbody tr:nth-child(odd) {
+    background-color: #f7fcf7; /* Fondo sutilmente diferente */
+}
+
+/* Color para resaltar los ingredientes clave en la tabla */
+.tabla-hidratantes td strong {
+    color: #1b5e20; /* Tono de verde muy oscuro para énfasis */
+}
+
+/* =======================================
+   ESTILOS PARA LA TABLA DE INGREDIENTES ACTIVOS
+   ======================================= */
+
+.tabla-ingredientes-activos {
+    width: 100%;
+    max-width: 950px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.95em;
+}
+
+.tabla-ingredientes-activos th, 
+.tabla-ingredientes-activos td {
+    border: 1px solid #c8e6c9; /* Borde verde muy claro */
+    padding: 15px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.tabla-ingredientes-activos thead th {
+    background-color: #388e3c; /* Verde oscuro para el encabezado */
+    color: white;
+    text-align: center;
+}
+
+/* Estilos de encabezado de grupo (Subtítulos) */
+.tabla-ingredientes-activos .grupo-header td {
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #a5d6a7; /* Línea separadora verde */
+    font-size: 1.05em;
+}
+
+/* Colores de fondo específicos para cada grupo */
+.tabla-ingredientes-activos .calmante-header td {
+    background-color: #e8f5e9; /* Verde más pálido */
+}
+.tabla-ingredientes-activos .reparadora-header td {
+    background-color: #dcedc8; /* Verde ligeramente diferente */
+}
+.tabla-ingredientes-activos .antiedad-header td {
+    background-color: #c5e1a5; /* Verde lima muy claro */
+}
+
+/* Estilo para la primera columna para destacar el enfoque */
+.tabla-ingredientes-activos tbody td:first-child {
+    background-color: #f7fcf7;
+    font-weight: bold;
+    width: 20%;
+    text-align: center;
+}
