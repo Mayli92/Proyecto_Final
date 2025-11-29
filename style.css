@@ -827,3 +827,163 @@ nav ul li.dropdown:hover .dropdown-content {
     width: 20%;
     text-align: center;
 }
+
+/* Estilos para el botón de ir al carrito */
+.boton-carrito {
+    display: block; /* Para que ocupe todo el ancho y se centre bien */
+    width: 250px;
+    margin: 20px auto; /* Centra el botón horizontalmente y le da margen vertical */
+    padding: 12px 20px;
+    text-align: center;
+    
+    /* Diseño del botón */
+    background-color: #38a169; /* Un color verde que simboliza "ir" o "éxito" */
+    color: white; /* Texto blanco */
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    text-decoration: none; /* Quita el subrayado predeterminado del enlace */
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer; /* Indica que es clickeable */
+    
+    /* Sombra para que destaque */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    /* Transición para un efecto suave al pasar el ratón */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el ratón (hover) */
+.boton-carrito:hover {
+    background-color: #2f855a; /* Un tono más oscuro de verde al pasar el ratón */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+/* --- Estilos Generales del Carrito --- */
+
+.titulo-carrito {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: #4CAF50; /* Color verde que simboliza la marca */
+    font-size: 2.2em;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+#contenedor-carrito {
+    min-height: 200px; /* Asegura un espacio mínimo si está vacío */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+
+/* --- 1. Estilos para la sección de Acciones del Carrito (Botones de Limpieza, etc.) --- */
+
+#acciones-carrito {
+    display: flex;
+    justify-content: space-between; /* Alinea los botones a los extremos */
+    gap: 15px; /* Espacio entre los botones */
+    margin-bottom: 30px;
+    padding: 10px 0;
+}
+
+/* Estilo base para todos los botones de acción */
+.btn-accion-carrito {
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex-grow: 1; /* Permite que los botones ocupen el espacio disponible */
+}
+
+/* Botón principal (ej. Vaciar Carrito, si es una acción prominente) */
+.btn-vaciar-carrito {
+    background-color: #f44336; /* Rojo para una acción destructiva */
+    color: white;
+}
+
+.btn-vaciar-carrito:hover {
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+}
+
+/* Botón secundario (ej. Continuar Comprando) */
+.btn-continuar-compra {
+    background-color: #607d8b; /* Gris azulado neutro */
+    color: white;
+    text-decoration: none; /* Si es un enlace <a> */
+    text-align: center; /* Centra el texto si es un enlace */
+    line-height: normal; /* Ajuste si se usa flex-grow */
+}
+
+.btn-continuar-compra:hover {
+    background-color: #455a64;
+    transform: translateY(-2px);
+}
+
+
+/* --- 2. Estilos para la sección de Resumen del Carrito --- */
+
+#resumen-carrito {
+    background-color: #e8f5e9; /* Fondo verde claro para destacar el resumen */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para las líneas de texto dentro del resumen (Subtotal, Envío, Total) */
+.resumen-linea {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #c8e6c9; /* Línea de puntos suave */
+}
+
+.resumen-linea span:first-child {
+    font-weight: normal;
+    color: #333;
+}
+
+.resumen-linea span:last-child {
+    font-weight: bold;
+    color: #1b5e20; /* Verde oscuro para los valores */
+}
+
+/* Estilo específico para la línea de Total Final */
+#total-final {
+    border-top: 2px solid #4CAF50; /* Línea más gruesa para el total */
+    font-size: 1.3em;
+    margin-top: 10px;
+    padding-top: 15px;
+    font-weight: bold;
+}
+
+/* Estilo para el botón de Pagar/Checkout */
+#btn-checkout {
+    display: block;
+    width: 100%; /* Ocupa todo el ancho del resumen */
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #4CAF50; /* Verde principal */
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#btn-checkout:hover {
+    background-color: #388e3c;
+    transform: scale(1.02);
+}
