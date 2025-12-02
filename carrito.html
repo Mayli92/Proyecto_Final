@@ -28,6 +28,33 @@
             </div>
             <section id="resumen-carrito">
             </section>
+            <section id="resumen-carrito">
+    </section>
+
+<div id="formulario-compra" style="display:none; margin-top: 20px; padding: 20px; background-color: #f7f7f7; border: 1px solid #ddd; border-radius: 8px;">
+    <h3>Datos para la Facturación y Envío</h3>
+    <form id="form-finalizar-compra" action="https://formspree.io/f/meonaovw" method="POST">
+        <div style="margin-bottom: 10px;">
+            <label for="nombre-cliente" style="display: block; margin-bottom: 5px;">Nombre:</label>
+            <input type="text" id="nombre-cliente" name="nombre_cliente" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="apellido-cliente" style="display: block; margin-bottom: 5px;">Apellido:</label>
+            <input type="text" id="apellido-cliente" name="apellido_cliente" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="email-cliente" style="display: block; margin-bottom: 5px;">Correo electrónico (Aquí enviaremos el comprobante):</label>
+            <input type="email" id="email-cliente" name="_replyto" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <input type="hidden" id="input-total-compra" name="total_compra" value="">
+        <input type="hidden" id="input-detalle-compra" name="detalle_compra" value="">
+        
+        <button type="submit" class="btn-finalizar-compra-confirmar" style="background-color: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+            Confirmar Compra y Pagar
+        </button>
+    </form>
+</div>
         </main>
         <footer>
             
