@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Variables de estado global para la paginación y el carrito
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    let limiteProductos = 1000; // Máximo que la API devolverá por llamada, aunque usaremos paginación por scroll
+    let limiteProductos = 100; // Máximo que la API devolverá por llamada, aunque usaremos paginación por scroll
     let productosSaltados = 0; // Contador de productos ya cargados (offset)
     let cargando = false; // Bandera para evitar peticiones duplicadas
     let todosCargados = false; // Indicador de finalización de productos
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cargando = true;
 
         // Construye la URL con LIMIT y SKIP para la paginación (usando el endpoint general /products)
-        // NOTA: DummyJSON solo permite hasta 100 productos por llamada, no 1000.
+        
         const url = `https://dummyjson.com/products?limit=100&skip=${productosSaltados}`;
         
         let contenedorProductos = document.getElementById("productos-contenedor");
@@ -103,10 +103,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     agregarProducto(producto);
                 });
 
+                let btnCarrito = document.createElement("btn-ircarrito");
+                btnCarrito.textContent = "Ir al Carrito";
+                btnCarrito.classList.add("btn-ircarrito"); 
+
+                btnCarrito.addEventListener("click", () => {
+                    window.location.href = "carrito.html";
+                });
+
+
                 tarjetaProducto.appendChild(imagenProducto);
                 tarjetaProducto.appendChild(tituloProducto);
                 tarjetaProducto.appendChild(precioProducto);
                 tarjetaProducto.appendChild(btnAgregar);
+                tarjetaProducto.appendChild(btnCarrito);
 
                 contenedorProductos.appendChild(tarjetaProducto);
             }

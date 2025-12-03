@@ -941,6 +941,43 @@ nav ul li.dropdown:hover .dropdown-content {
     background-color: #388e3c;
 }
 
+.btn-ircarrito{
+    display: block;
+    background-color: #FFe81a; /* Amarillo de acento */
+    color: #0f0e0e; /* Texto oscuro */
+    border: 2px solid #249b0c;
+    padding: 5px 8px;
+    font-size: 0,85em;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 4px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 5px;
+
+}  
+.btn-ircarrito:hover {
+    background-color: #b8fc5f; /* Amarillo ligeramente más claro */
+    color: #000;
+}
+.btn-agregar {
+    display: block;
+    background-color: #ffe81a; /* Verde principal */
+    color: rgb(12, 12, 12);
+    border: 2px solid #249b0c;
+    font-size: 0,85em;
+    text-align: center;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 5px;
+}
+.btn-agregar:hover {
+    background-color: #b8fc5f; /* Verde más claro al pasar el ratón */
+}
+
 /* Estilo para el Total a Pagar */
 #resumen-carrito {
     text-align: right;
@@ -1037,4 +1074,32 @@ nav ul li.dropdown:hover .dropdown-content {
 
 .btn-modal-cerrar:hover {
     background-color: #388e3c;
+}
+
+/* =======================================
+   NUEVO ESTILO: Botón Ir al Carrito (dentro de tarjeta)
+   ======================================= */
+
+.producto-card .btn-ir-carrito {
+    /* Estilo para que ocupe el espacio del botón 'Agregar' */
+    display: block; 
+    width: 100%;
+    padding: 10px 15px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+    /* Colores llamativos (Amarillo de Acento con Texto Oscuro) */
+    background-color: #FFC107; /* Amarillo de acento */
+    color: #333; /* Texto oscuro */
+    border: 1px solid #FFB300;
+}
+
+.producto-card .btn-ir-carrito:hover {
+    background-color: #FFD740; /* Amarillo ligeramente más claro */
+    color: #000;
 }
