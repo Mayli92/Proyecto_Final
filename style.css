@@ -12,7 +12,7 @@ body {
 }
 
 .layout {
-    max-width: 1200px;
+    width: auto;
     margin: 0 auto;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -54,6 +54,7 @@ nav ul li a:hover {
 }
 
 main {
+    width: auto;
     padding: 20px;
 }
 
