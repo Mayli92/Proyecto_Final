@@ -8,6 +8,7 @@ body {
     padding: 0;
     line-height: 1.6;
     background-color: #f4f4f4;
+    width: auto;
 }
 
 .layout {
