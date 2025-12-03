@@ -85,6 +85,34 @@
         </footer>
 
     </div>
+
+        <div id="comprobante-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>✅ Compra Procesada con Éxito</h3>
+            
+            <p style="color:#d32f2f; font-weight: bold;">
+                NOTIFICACIÓN AL VENDEDOR:
+            </p>
+
+            <div class="cliente-datos">
+                <p><strong>Estado:</strong> Compra efectuada y comprobante enviado al cliente.</p>
+                <p id="modal-cliente-nombre"></p>
+                <p id="modal-cliente-email"></p>
+                <p><strong>Total:</strong> <span id="modal-total" style="color: #4CAF50;"></span></p>
+            </div>
+            
+            <p style="font-weight: bold;">DETALLE DEL COMPROBANTE ENVIADO:</p>
+            <div class="detalle-compra">
+                <pre id="modal-detalle"></pre>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn-modal-cerrar" id="btn-modal-aceptar">Aceptar y Continuar</button>
+            </div>
+        </div>
+    </div>
+
+
     <script src="carrito.js"></script>
 </body>
 </html>
