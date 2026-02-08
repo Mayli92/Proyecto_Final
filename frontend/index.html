@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vida Plena | Tu Guía Esencial</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f7d5cff221.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Vida Plena: "Tu Guía Esencial"</h1>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">🛍️ Inicio</a></li>
+                <li><a href="#productos-seccion">🛒 Nuestros Productos</a></li>
+                <li><a href="carrito.html">🛒 Carrito (<span id="contador-carrito">0</span>)</a></li>
+                <li><a href="login.html">🔐 Login</a></li>
+                <li><a href="registro.html">📝 Registro</a></li>
+            </ul>
+
+            <!-- Botón cerrar sesión -->
+            <button onclick="cerrarSesion()" id="btn-cerrar-sesion">
+                Cerrar sesión
+            </button>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- SECCIÓN BIENVENIDA -->
+        <section class="hero">
+            <h2>Bienvenido/a a Vida Plena</h2>
+            <p>
+                Descubrí productos pensados para tu bienestar, belleza y estilo.
+            </p>
+        </section>
+
+        <!-- SECCIÓN PRODUCTOS -->
+        <section id="productos-seccion">
+            <h2>Nuestros Productos</h2>
+
+            <div id="productos-contenedor" class="productos-contenedor">
+                <!-- Productos cargados dinámicamente -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div id="publicidad-footer">
+            <p>✨ Promo especial: Curso de Yoga 🧘‍♀️</p>
+        </div>
+
+        <div class="footer-content">
+            <p>&copy; 2025 Vida Plena. Todos los derechos reservados.</p>
+
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com/" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="productos.js"></script>
+    <script src="auth.js"></script>
+
+</body>
+</html>

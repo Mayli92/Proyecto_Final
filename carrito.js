@@ -13,6 +13,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Función principal para renderizar los productos en el carrito
     const renderizarProductos = () => {
+const agregarProducto = (producto) => {
+    const productoExistente = carrito.find(p => p.id === producto.id);
+
+    // 🔴 CONTROL DE STOCK
+    if (producto.stock <= 0) {
+        alert("No hay stock disponible");
+        return;
+    }
+
+    if (productoExistente) {
+        if (productoExistente.cantidad < producto.stock) {
+            productoExistente.cantidad++;
+        } else {
+            alert("No hay más stock disponible");
+            return;
+        }
+    } else {
+        producto.cantidad = 1;
+        carrito.push(producto);
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    actualizarContador();
+};
+
+
         let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
         
         productosEnCarrito(carrito); 
@@ -169,44 +195,37 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (response.ok) {
-                    
-                    // Lógica para mostrar la MODAL personalizada
-                    const modal = document.getElementById("comprobante-modal");
-                    const btnAceptar = document.getElementById("btn-modal-aceptar");
 
-                    if(modal && btnAceptar) {
-                        // 1. Llenar la Modal con los datos
-                        document.getElementById("modal-cliente-nombre").textContent = `Cliente: ${datosCliente.nombre} ${datosCliente.apellido}`;
-                        document.getElementById("modal-cliente-email").textContent = `Correo: ${datosCliente.email}`;
-                        document.getElementById("modal-total").textContent = datosCliente.total;
-                        document.getElementById("modal-detalle").textContent = datosCliente.detalle;
-                        
-                        // 2. Mostrar la Modal
-                        modal.classList.add('active');
+    // 🔴 DESCONTAR STOCK (SIMULACIÓN FRONTEND)
+    carrito.forEach(prod => {
+        prod.stock -= prod.cantidad;
+    });
 
-                        // 3. Manejar el cierre de la Modal y la redirección
-                        // Se usa 'once: true' para que el listener se elimine automáticamente después del click
-                        btnAceptar.addEventListener('click', () => {
-                            modal.classList.remove('active'); // Ocultar
-                            
-                            // Limpiar el carrito y redirigir
-                            localStorage.removeItem("carrito");
-                            window.location.href = "index.html"; 
-                        }, { once: true });
-                    } else {
-                        // Fallback si la modal no se encuentra (vuelve al alert simple)
-                         const mensaje = `¡Compra Finalizada con Éxito!\n\n` +
-                                    `NOTIFICACIÓN AL VENDEDOR:\n` +
-                                    `✅ Compra efectuada con éxito.\n` +
-                                    `✅ Se ha enviado el comprobante/factura a: ${datosCliente.email}\n` +
-                                    `DATOS DEL CLIENTE:\n` +
-                                    `- Nombre: ${datosCliente.nombre} ${datosCliente.apellido}\n` +
-                                    `- Correo: ${datosCliente.email}\n` +
-                                    `- Total: ${datosCliente.total}`;
-                        alert(mensaje);
-                        localStorage.removeItem("carrito");
-                        window.location.href = "index.html"; 
-                    }
+    // Guardamos el stock actualizado (simulado)
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    // Lógica para mostrar la MODAL personalizada
+    const modal = document.getElementById("comprobante-modal");
+    const btnAceptar = document.getElementById("btn-modal-aceptar");
+
+    if (modal && btnAceptar) {
+        document.getElementById("modal-cliente-nombre").textContent =
+            `Cliente: ${datosCliente.nombre} ${datosCliente.apellido}`;
+        document.getElementById("modal-cliente-email").textContent =
+            `Correo: ${datosCliente.email}`;
+        document.getElementById("modal-total").textContent = datosCliente.total;
+        document.getElementById("modal-detalle").textContent = datosCliente.detalle;
+
+        modal.classList.add('active');
+
+        btnAceptar.addEventListener('click', () => {
+            modal.classList.remove('active');
+
+            // 🧹 Limpiar carrito
+            localStorage.removeItem("carrito");
+            window.location.href = "index.html";
+        }, { once: true });
+    }
 
                 } else {
                     alert("Error al procesar la compra. Por favor, revise sus datos o la configuración de Formspree.");
@@ -241,12 +260,22 @@ document.addEventListener("DOMContentLoaded", () => {
             btnFinalizar.id = "btn-finalizar-compra"; 
 
             btnFinalizar.addEventListener("click", () => {
-                // OCULTAMOS EL BOTÓN DE FINALIZAR y MOSTRAMOS EL FORMULARIO
-                if (formularioCompra) {
-                    formularioCompra.style.display = 'block';
-                }
-                btnFinalizar.style.display = 'none';
-            });
+    const logueado = localStorage.getItem("usuarioLogueado");
+
+    // 🔐 BLOQUEAR SI NO ESTÁ LOGUEADO
+    if (!logueado) {
+        alert("Debes iniciar sesión para comprar");
+        window.location.href = "login.html";
+        return;
+    }
+
+    // ✅ SI ESTÁ LOGUEADO
+    if (formularioCompra) {
+        formularioCompra.style.display = 'block';
+    }
+    btnFinalizar.style.display = 'none';
+});
+
 
             divAcciones.appendChild(btnVaciar);
             divAcciones.appendChild(btnFinalizar);
