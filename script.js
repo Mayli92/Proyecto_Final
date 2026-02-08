@@ -81,6 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // 3. Renderizar solo los productos que pasaron el filtro
             for (const producto of productosFiltrados) {
+
+                let stockProducto = document.createElement("p");
+                stockProducto.textContent = `Stock disponible: ${producto.stock}`;
+
+                tarjetaProducto.appendChild(stockProducto);
+
                 let tarjetaProducto = document.createElement("article");
                 tarjetaProducto.classList.add("tarjeta-producto");
 
