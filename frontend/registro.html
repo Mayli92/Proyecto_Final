@@ -4,26 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro | Vida Plena</title>
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/f7d5cff221.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <!-- HEADER -->
     <header>
-        <h1>Vida Plena: "Tu Guía Esencial"</h1>
+        <h1>Las Magnolias</h1>
         <nav>
             <ul>
                 <li><a href="index.html">🛍️ Inicio</a></li>
                 <li><a href="login.html">🔐 Iniciar Sesión</a></li>
                 <li><a href="carrito.html">🛒 Carrito</a></li>
             </ul>
-
-            <!-- Botón cerrar sesión (solo si está logueado) -->
-            <button onclick="cerrarSesion()" id="btn-cerrar-sesion">
-                Cerrar sesión
-            </button>
         </nav>
     </header>
 
@@ -38,6 +32,14 @@
                 type="text"
                 id="reg-nombre"
                 placeholder="Tu nombre"
+                required
+            >
+
+            <label for="reg-apellido">Apellido</label>
+            <input
+                type="text"
+                id="reg-apellido"
+                placeholder="Tu apellido"
                 required
             >
 
@@ -70,12 +72,13 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2025 Vida Plena. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Las Magnolias. Todos los derechos reservados.</p>
     </footer>
 
     <!-- SCRIPTS -->
-    <script src="registro.js"></script>
-    <script src="auth.js"></script>
+   <script src="js/registro.js"></script>
+
+    <script src="js/auth.js"></script>
 
 </body>
 </html>

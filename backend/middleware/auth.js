@@ -1,16 +1,18 @@
 const jwt = require("jsonwebtoken");
 
-function auth(req, res, next) {
-    const token = req.headers["authorization"];
-    if (!token) return res.status(401).json("Acceso denegado");
+module.exports = function (req, res, next) {
+    // Leer el token del header
+    const token = req.header("x-auth-token");
+    
+    if (!token) {
+        return res.status(401).json("No hay token, permiso denegado");
+    }
 
     try {
-        const verified = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = verified;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded; // Guardamos el payload (id y role) en el request
         next();
-    } catch {
-        res.status(400).json("Token inválido");
+    } catch (error) {
+        res.status(401).json("Token no es válido");
     }
-}
-
-module.exports = auth;
+};

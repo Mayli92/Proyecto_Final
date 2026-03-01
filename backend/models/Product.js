@@ -1,21 +1,46 @@
+const mongoose = require("mongoose");
+
 const ProductSchema = new mongoose.Schema({
-    title: String,
-    price: Number,
-    stock: Number
+
+    nombre: {
+        type: String,
+        required: true,
+        trim: true
+    },
+
+    description: {
+        type: String,
+        default: ""
+    },
+
+    precio: {
+        type: Number,
+        required: true,
+        min: 0
+    },
+
+    stock: {
+        type: Number,
+        required: true,
+        min: 0,
+        default: 0
+    },
+
+    image: {
+        type: String,
+        default: ""
+    },
+
+    category: {
+        type: String,
+        default: "General"
+    },
+
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+
 });
 
 module.exports = mongoose.model("Product", ProductSchema);
-app.post("/api/compra", auth, async (req, res) => {
-    for (const item of req.body.carrito) {
-        const producto = await Product.findById(item.id);
-
-        if (producto.stock < item.cantidad) {
-            return res.status(400).json("Stock insuficiente");
-        }
-
-        producto.stock -= item.cantidad;
-        await producto.save();
-    }
-
-    res.json("Compra realizada");
-});

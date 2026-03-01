@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión | Vida Plena</title>
+    <title>Iniciar Sesión | Las Magnolias</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/f7d5cff221.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <!-- HEADER -->
     <header>
-        <h1>Vida Plena: "Tu Guía Esencial"</h1>
+        <h1>Las Magnolias</h1>
         <nav>
             <ul>
                 <li><a href="index.html">🛍️ Inicio</a></li>
                 <li><a href="carrito.html">🛒 Carrito</a></li>
                 <li><a href="registro.html">📝 Registrarse</a></li>
+                <li id="btn-cerrar-sesion" style="display: none;">
+                <button id="logout-btn" class="btn-cerrar">Cerrar Sesión</button> </li>
             </ul>
 
-            <!-- Botón cerrar sesión (se muestra solo si está logueado) -->
-            <button onclick="cerrarSesion()" id="btn-cerrar-sesion">
-                Cerrar sesión
-            </button>
         </nav>
     </header>
 
@@ -61,12 +59,12 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2025 Vida Plena. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Las Magnolias. Todos los derechos reservados.</p>
     </footer>
 
     <!-- SCRIPTS -->
-    <script src="login.js"></script>
-    <script src="auth.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/auth-check.js"></script>
 
 </body>
 </html>

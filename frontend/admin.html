@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Las Magnolias</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="body-admin">
+
+    <header class="header-admin">
+        <div class="logo-admin">
+            <h1>Las <span>Magnolias</span></h1>
+            <p>Panel de Control</p>
+        </div>
+        <nav>
+            <a href="index.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver a la tienda</a>
+        </nav>
+    </header>
+
+    <main class="contenedor-admin">
+        <section class="seccion-form">
+            <h2><i class="fas fa-plus-circle"></i> Gestión de Inventario</h2>
+            <form id="admin-form" class="form-estilizado">
+                <input type="text" id="admin-nombre" placeholder="Nombre del producto" required>
+                <input type="text" id="admin-categoria" placeholder="Categoría (ej: Facial, Corporal)">
+                <input type="number" id="admin-precio" placeholder="Precio ($)" required>
+                <input type="number" id="admin-stock" placeholder="Cantidad en Stock" required>
+                <input type="text" id="admin-imagen" placeholder="URL de la imagen" class="full-width">
+                <textarea id="admin-descripcion" placeholder="Descripción detallada del producto..." class="full-width"></textarea>
+                <button type="submit" id="btn-guardar">Guardar Producto</button>
+            </form>
+        </section>
+
+        <section class="admin-dashboard-cards">
+    <div class="card-stats">
+        <i class="fas fa-box-open"></i>
+        <div class="stats-info">
+            <h3 id="total-productos">0</h3>
+            <p>Productos Totales</p>
+        </div>
+    </div>
+    <div class="card-stats alerta">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div class="stats-info">
+            <h3 id="stock-bajo-count">0</h3>
+            <p>Stock Crítico</p>
+        </div>
+    </div>
+    <div class="card-stats inversion">
+        <i class="fas fa-dollar-sign"></i>
+        <div class="stats-info">
+            <h3 id="valor-inventario">0</h3>
+            <p>Valor Inventario</p>
+        </div>
+    </div>
+</section>
+
+        <hr class="separador">
+
+        <section class="gestion-productos">
+            <h2><i class="fas fa-boxes-stacked"></i> Productos en Existencia</h2>
+            
+            <div class="buscador-admin-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="input-busqueda-admin" 
+                       placeholder="Buscar por nombre de producto..." 
+                       onkeyup="filtrarTablaAdmin()">
+            </div>
+
+            <div class="tabla-contenedor">
+                <table class="tabla-admin">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-productos-admin">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div id="mensaje-admin"></div>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

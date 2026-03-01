@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | Las Magnolias</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/f7d5cff221.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1 class="logo-magnolias">Las <span>Magnolias</span></h1> 
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">🛍️ INICIO</a></li>
+                <li><a href="carrito.html" id="contador-carrito">🛒 CARRITO (0)</a></li>
+                <li id="menu-registro"><a href="registro.html">REGISTRARSE</a></li> 
+                <li id="menu-perfil" style="display: none;">
+                    <a href="perfil.html" style="font-weight: bold; color: #b56b78;">
+                        🌸 <span id="nombre-usuario-nav"></span>
+                    </a>
+                </li>
+
+                <li id="btn-cerrar-sesion" style="display: none;">
+                    <button id="logout-btn" class="btn-cerrar">CERRAR SESIÓN</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="perfil-container">
+        <div class="perfil-grid">
+            <section class="datos-personales">
+                <div class="card-perfil">
+                    <div class="avatar-cliente">🌸</div>
+                    <h2 id="perf-nombre"></h2>
+                    <p id="perf-email"></p>
+                    <hr>
+                    <p><strong>Estado:</strong> Cliente VIP ✨</p>
+                </div>
+            </section>
+
+            <section class="historial-compras">
+                <h3>Mis Compras Anteriores</h3>
+                <div id="lista-ordenes">
+                    <p>Buscando tus pedidos...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    
+     <script src="js/auth-check.js"></script> 
+    <script src="js/perfil.js"></script>
+</body>
+
+  
+</html>

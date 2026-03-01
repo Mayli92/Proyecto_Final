@@ -1,54 +1,105 @@
 const express = require("express");
+const nodemailer = require('nodemailer'); 
 const router = express.Router();
-
-const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const User = require("../models/User"); // Tu modelo de Mongoose
+const auth = require("../middleware/auth"); // Tu middleware de backend
 
-/* -----------------
-   REGISTRO
------------------ */
+
+
+// Configura el transporte (ejemplo con Gmail)
+const sgMail = require('@sendgrid/mail');
+// Reemplaza esto por tu código largo de SendGrid
+sgMail.setApiKey(process.env.SENDGRID_API_KEY); // Asegúrate de usar process.env.SENDGRID_API_KEY en producción
+
+/* --- REGISTRO --- */
 router.post("/register", async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const { nombre, apellido, email, password } = req.body;
 
-        const user = new User({
-            nombre: req.body.nombre,
-            email: req.body.email,
-            password: hashedPassword
-        });
+        // Verificar si el usuario ya existe
+        let user = await User.findOne({ email });
+        if (user) return res.status(400).json("El usuario ya existe");
 
+        // Encriptar contraseña
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        user = new User({ nombre, apellido, email, password: hashedPassword });
         await user.save();
 
-        res.json({ message: "Usuario creado" });
-
+        res.json("Usuario registrado correctamente");
     } catch (error) {
-        res.status(500).json(error.message);
+        console.error("DETALLE DEL ERROR:", error.message); 
+        res.status(500).json("Error: " + error.message);
     }
 });
 
-/* -----------------
-   LOGIN
------------------ */
+/* --- LOGIN --- */
 router.post("/login", async (req, res) => {
     try {
-        const user = await User.findOne({ email: req.body.email });
+        const { email, password } = req.body;
 
-        if (!user) return res.status(400).json("Usuario no existe");
+        const user = await User.findOne({ email });
+        if (!user) return res.status(400).json("Credenciales inválidas");
 
-        const valid = await bcrypt.compare(req.body.password, user.password);
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return res.status(400).json("Credenciales inválidas");
 
-        if (!valid) return res.status(400).json("Contraseña incorrecta");
-
+        // Crear Token
         const token = jwt.sign(
-            { id: user._id },
-            process.env.JWT_SECRET
+            { id: user._id, role: user.role },
+            process.env.JWT_SECRET,
+            { expiresIn: "2h" }
         );
 
-        res.json({ token });
-
+        // AQUÍ ESTÁ LA CLAVE: Enviamos 'nombre' para que coincida con tu login.js
+        res.json({
+            token,
+            nombre: user.nombre,
+            email: user.email
+        });
     } catch (error) {
-        res.status(500).json(error.message);
+        res.status(500).json("Error en el login");
+    }
+});
+
+
+router.post('/newsletter', async (req, res) => {
+    const { email } = req.body;
+
+    const msg = {
+        to: email, 
+        from: 'lasmagnoliasbeauty2026@gmail.com', // EL MISMO QUE VERIFICASTE
+        subject: '¡Bienvenida a Las Magnolias! 🌸',
+        text: 'Gracias por suscribirte a nuestra comunidad.',
+        html: `
+            <div style="font-family: sans-serif; border: 1px solid #eee; padding: 20px; text-align: center;">
+                <h2 style="color: #d48d9a;">¡Hola! Gracias por unirte</h2>
+                <p>Tu cupón de 10% de descuento es: <strong>MAGNOLIA10</strong></p>
+                <p>Te esperamos pronto en nuestra tienda.</p>
+            </div>
+        `,
+    };
+
+    try {
+        await sgMail.send(msg);
+        res.status(200).json({ mensaje: "Correo enviado" });
+    } catch (error) {
+        // Esto ayuda a ver por qué falla en la consola del servidor
+        console.error("Error de SendGrid:", error.response ? error.response.body : error);
+        res.status(500).json({ error: "Error al enviar el correo" });
+    }
+});
+/* --- OBTENER PERFIL (Protegida) --- */
+router.get("/perfil", auth, async (req, res) => {
+    try {
+        // req.user.id viene de tu middleware de backend 'auth'
+        const user = await User.findById(req.user.id).select("-password");
+        res.json(user);
+    } catch (error) {
+        res.status(500).json("Error al obtener el perfil");
     }
 });
 

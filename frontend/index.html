@@ -3,84 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vida Plena | Tu Guía Esencial</title>
+    <title>Las Magnolias - Belleza Natural</title>
 
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/f7d5cff221.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- HEADER -->
     <header>
-        <h1>Vida Plena: "Tu Guía Esencial"</h1>
+        <div class="logo-container">
+            <h1 class="logo-magnolias">Las <span>Magnolias</span></h1>
+            <p class="slogan">Belleza Natural & Bienestar</p>
+        </div>
 
-        <nav>
-            <ul>
-                <li><a href="index.html">🛍️ Inicio</a></li>
-                <li><a href="#productos-seccion">🛒 Nuestros Productos</a></li>
-                <li><a href="carrito.html">🛒 Carrito (<span id="contador-carrito">0</span>)</a></li>
-                <li><a href="login.html">🔐 Login</a></li>
-                <li><a href="registro.html">📝 Registro</a></li>
-            </ul>
+<nav>
+    <ul class="nav-list">
+        <li><a href="index.html">🛍️ INICIO</a></li>
+        <li><a href="carrito.html" id="contador-carrito">🛒 CARRITO (0)</a></li>
+        
+        <li id="menu-login"><a href="login.html">🔑 INGRESAR</a></li>
+        <li id="menu-registro"><a href="registro.html">REGISTRARSE</a></li>
+        
+        <li id="menu-perfil" style="display: none;">
+            <a href="perfil.html" style="font-weight: bold; color: #b56b78;">
+                🌸 <span id="nombre-usuario-nav"></span>
+            </a>
+        </li>
 
-            <!-- Botón cerrar sesión -->
-            <button onclick="cerrarSesion()" id="btn-cerrar-sesion">
-                Cerrar sesión
-            </button>
+        <li id="btn-cerrar-sesion" style="display: none;">
+            <button id="logout-btn" class="btn-cerrar">CERRAR SESIÓN</button>
+        </li>
+    </ul>
         </nav>
     </header>
 
-    <!-- MAIN -->
     <main>
-
-        <!-- SECCIÓN BIENVENIDA -->
-        <section class="hero">
-            <h2>Bienvenido/a a Vida Plena</h2>
-            <p>
-                Descubrí productos pensados para tu bienestar, belleza y estilo.
-            </p>
+        <section class="hero-beauty">
+            <div class="hero-content">
+                <span>Nueva Colección</span>
+                <h2>Resalta tu esencia natural</h2>
+                <p>Descubre nuestra selección exclusiva de productos botánicos para el cuidado de tu piel.</p>
+                <a href="#productos-contenedor" class="btn-hero">Ver Catálogo</a>
+            </div>
         </section>
 
-        <!-- SECCIÓN PRODUCTOS -->
-        <section id="productos-seccion">
-            <h2>Nuestros Productos</h2>
+        <section class="banner-promocional">
+            <div class="banner-contenido">
+                <span class="tag">¡NUEVO CUPÓN DE DESCUENTO!</span>
+                <h1>Botánica & Brillo</h1>
+                <p>Aprovecha un 20% OFF en tu primera compra con el código: <strong>MAGNOLIA20</strong></p>
+                <button class="btn-categoria">Comprar Ahora</button>
+            </div>
+        </section>
 
-            <div id="productos-contenedor" class="productos-contenedor">
-                <!-- Productos cargados dinámicamente -->
+        <section class="beneficios-beauty">
+            <div class="beneficio-item">
+                <i class="fa-solid fa-leaf"></i>
+                <h3>Cruelty Free</h3>
+                <p>Productos no testeados en animales.</p>
+            </div>
+            <div class="beneficio-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <h3>Envío Express</h3>
+                <p>Gratis en compras superiores a $15.000.</p>
+            </div>
+            <div class="beneficio-item">
+                <i class="fa-solid fa-shield-heart"></i>
+                <h3>Compra Segura</h3>
+                <p>Tus pagos están protegidos.</p>
+            </div>
+            <div class="beneficio-item">
+                <i class="fa-solid fa-spa"></i>
+                <h3>Premium Quality</h3>
+                <p>Ingredientes seleccionados.</p>
+            </div>
+        </section>
+
+        <div class="buscador-contenedor">
+            <div class="buscador-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="input-busqueda" placeholder="Buscar crema, maquillaje..." onkeyup="buscarPorNombre()">
+            </div>
+        </div>
+
+        <div class="filtros-categorias">
+    <button class="btn-categoria" onclick="filtrarProductos('Todos')">Todos</button>
+    <button class="btn-categoria" onclick="filtrarProductos('Facial')">Facial</button>
+    <button class="btn-categoria" onclick="filtrarProductos('Corporal')">Corporal</button>
+    <button class="btn-categoria" onclick="filtrarProductos('Maquillaje')">Maquillaje</button>
+    <button class="btn-categoria" onclick="filtrarProductos('Perfumes')">Perfumes</button>
+</div>
+
+        <section id="productos-contenedor" class="productos-grid">
+            </section>
+
+        <div id="modal-detalle" class="modal-detalle">
+            <div class="modal-detalle-contenido">
+                <span class="cerrar-modal">&times;</span>
+                <div id="detalle-info"></div>
+            </div>
+        </div>
+
+        <section class="faq-seccion">
+            <div class="contenedor-chico">
+                <h2 class="titulo-faq">Preguntas Frecuentes</h2>
+                <div class="faq-item">
+                    <button class="faq-pregunta" onclick="toggleFAQ(this)">
+                        ¿Cuáles son los métodos de pago?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-respuesta"><p>Tarjetas, transferencias y Mercado Pago.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-pregunta" onclick="toggleFAQ(this)">
+                        ¿Los productos son cruelty-free?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-respuesta"><p>¡Sí! Ninguno de nuestros productos es testeado en animales.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonios">
+            <h2>Experiencias Magnolias</h2>
+
+            <section class="dejar-resena">
+                <h3>Comparte tu experiencia</h3>
+                <form id="form-resena" class="resena-form">
+                    <div class="valoracion-input">
+                        <label>Tu valoración:</label>
+                        <select id="resena-estrellas" required>
+                            <option value="5">⭐⭐⭐⭐⭐ (Excelente)</option>
+                            <option value="4">⭐⭐⭐⭐ (Muy bueno)</option>
+                            <option value="3">⭐⭐⭐ (Bueno)</option>
+                            <option value="2">⭐⭐ (Regular)</option>
+                            <option value="1">⭐ (Malo)</option>
+                        </select>
+                    </div>
+                    <textarea id="resena-texto" placeholder="Escribe aquí tu comentario..." required></textarea>
+                    <button type="submit" class="btn-categoria">Enviar Reseña</button>
+                </form>
+            </section>
+
+            <div id="contenedor-testimonios-dinamicos" class="testimonios-grid"></div>
+        </section>
+
+        <section class="newsletter">
+            <div class="newsletter-contenido">
+                <h3>Únete a nuestra comunidad</h3>
+                <p>Recibe consejos de belleza y 10% de descuento.</p>
+              <form id="newsletter-form" class="newsletter-form">
+                <input type="email" id="newsletter-input" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="btn-categoria">Suscribirme</button>
+                </form>
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <div id="publicidad-footer">
-            <p>✨ Promo especial: Curso de Yoga 🧘‍♀️</p>
-        </div>
-
-        <div class="footer-content">
-            <p>&copy; 2025 Vida Plena. Todos los derechos reservados.</p>
-
-            <div class="social-icons">
-                <a href="https://www.facebook.com/" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://twitter.com/" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://www.youtube.com/" target="_blank">
-                    <i class="fab fa-youtube"></i>
-                </a>
+    <footer class="footer-magnolias">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <h3>LAS MAGNOLIAS</h3>
+                <p>Belleza natural y bienestar en cada producto.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="perfil.html">Mi Perfil</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
             </div>
         </div>
+        <div class="footer-copy">
+            <p>&copy; 2026 Las Magnolias - Todos los derechos reservados</p>
+        </div>
     </footer>
+    <a href="https://wa.me/5491112345678" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <!-- SCRIPTS -->
-    <script src="productos.js"></script>
-    <script src="auth.js"></script>
+      <script src="js/auth-check.js"></script>
+      <script src="js/main.js"></script>
 
 </body>
 </html>

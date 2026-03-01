@@ -1,120 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compra</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Carrito | Las Magnolias</title>
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/f7d5cff221.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="layout">
         <header>
-            <h1>Vida Plena: "Tu Guia Esencial"</h1> 
+            <h1 class="logo-magnolias">Las <span>Magnolias</span></h1> 
             <nav>
                 <ul>
                     <li><a href="index.html">🛍️ Inicio</a></li>
                     <li><a href="contacto.html">📞 Contacto</a></li>
-                    <li><a href="index.html#productos-seccion">🛒 Nuestros Productos</a></li>
+                   <li><a href="carrito.html" id="contador-carrito">🛒 CARRITO (0)</a></li>
+                    <li id="menu-perfil" style="display: none;"><a href="perfil.html">🌸 Mi Perfil</a></li>
+                    <li id="menu-login"><a href="login.html">🔑 Ingresar</a></li>
+                   <li id="menu-perfil" style="display: none;">
+                    <a href="perfil.html" style="font-weight: bold; color: #b56b78;"> 🌸 <span id="nombre-usuario-nav"></span>
+                    </a>
+                </li>
+
+            <li id="btn-cerrar-sesion" style="display: none;"> <button id="logout-btn" class="btn-cerrar">Cerrar Sesión</button>
+            </li>
                 </ul>
-                <p>Carrito (<span id="contador-carrito">0</span>)</p>
             </nav>
         </header>
 
-        <main>
-            <h2 class="titulo-carrito">Carrito de Compra</h2>
-            <section id="contenedor-carrito">
-            </section>
-            <div id="acciones-carrito">
-            </div>
-            <section id="resumen-carrito">
-            </section>
-            <section id="resumen-carrito">
-    </section>
+        <main class="carrito-main">
+            <h2 class="titulo-carrito">Tu Selección de Belleza</h2>
+            
+            <section id="contenedor-carrito" class="grid-carrito">
+                </section>
 
-<div id="formulario-compra" style="display:none; margin-top: 20px; padding: 20px; background-color: #eef7c9; border: 2px solid #04c204; border-radius: 8px;">
-    <h3>Datos para la Facturación y Envío</h3>
-    <form id="form-finalizar-compra" action="https://formspree.io/f/meonaovw" method="POST">
-        <div style="margin-bottom: 10px;">
-            <label for="nombre-cliente" style="display: block; margin-bottom: 5px;">Nombre:</label>
-            <input type="text" id="nombre-cliente" name="nombre_cliente" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
-        </div>
-        <div style="margin-bottom: 10px;">
-            <label for="apellido-cliente" style="display: block; margin-bottom: 5px;">Apellido:</label>
-            <input type="text" id="apellido-cliente" name="apellido_cliente" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
-        </div>
-        <div style="margin-bottom: 15px;">
-            <label for="email-cliente" style="display: block; margin-bottom: 5px;">Correo electrónico (Aquí enviaremos el comprobante):</label>
-            <input type="email" id="email-cliente" name="_replyto" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
-        </div>
+            <section id="resumen-total" class="resumen-caja">
 
-        <input type="hidden" id="input-total-compra" name="total_compra" value="">
-        <input type="hidden" id="input-detalle-compra" name="detalle_compra" value="">
-        
-        <button type="submit" class="btn-finalizar-compra-confirmar" style="background-color: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
-            Confirmar Compra y Pagar
-        </button>
-    </form>
-</div>
+                <div class="cupon-contenedor" style="margin-bottom: 20px; padding: 10px; background: #fff5f6; border-radius: 8px;">
+                <label style="display: block; font-size: 0.9em; color: #b56b78; margin-bottom: 5px;">¿Tienes un cupón?</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="input-cupon" placeholder="Código de descuento" style="flex: 1; padding: 8px; border: 1px solid #f2dadd; border-radius: 5px;">
+                <button onclick="aplicarCupon()" class="btn-detalle" style="padding: 8px 15px;">Aplicar</button>
+                </div>
+                <p id="mensaje-cupon" style="font-size: 0.8em; margin-top: 5px; display: none;"></p>
+                </div>
+                <div class="total-fila">
+                    <span>Subtotal:</span>
+                <span id="subtotal-monto">$ 0.00</span>
+                </div>
+                <div class="total-fila" id="fila-descuento" style="display: none; color: #e91e63;">
+                <span>Descuento aplicado:</span>
+                <span id="descuento-monto">-$ 0.00</span>
+                </div>
+                <div class="total-fila">
+                <span style="font-weight: bold; font-size: 1.2em;">Total a pagar:</span>
+                <span id="total-monto" style="font-weight: bold; font-size: 1.2em; color: #d48d9a;">$ 0.00</span>
+                </div>
+
+                <button id="btn-abrir-checkout" class="btn-hero">Finalizar Compra</button>
+            </section>
         </main>
-        <footer>
-            
 
-            <div id="publicidad-footer">
-                <p>¡Anúnciate aquí! Oferta especial: Curso de Yoga 🧘‍♀️</p>
-                </div>
-            
-            <div id="footer-content">
-                <p>&copy; 2025 VidaPlena: "Tu Guia Esencial"</p>
+        <div id="modal-pago" class="modal-detalle">
+            <div class="modal-detalle-contenido">
+                <span class="cerrar-modal" id="cerrar-checkout">&times;</span>
+                <h2 class="titulo-carrito">Finalizar Pedido</h2>
+                <p class="subtitulo-modal">Completa tus datos para recibir tus productos</p>
                 
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/" target="_blank" aria-label="Síguenos en Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/" target="_blank" aria-label="Síguenos en Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://twitter.com/" target="_blank" aria-label="Síguenos en Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://www.youtube.com/" target="_blank" aria-label="Mira nuestro canal de YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
+                <form id="form-finalizar-compra" class="form-elegante">
+                    <div class="grupo-input">
+                        <label>Nombre Completo</label>
+                        <input type="text" id="nombre-cliente" required placeholder="Ej: Ana García">
+                    </div>
+                    <div class="grupo-input">
+                        <label>Email</label>
+                        <input type="email" id="email-cliente" required placeholder="tu@email.com">
+                    </div>
+                    <div class="grupo-input">
+                        <label>Dirección de Envío</label>
+                        <input type="text" id="direccion-cliente" required placeholder="Calle, Ciudad, CP">
+                    </div>
+                    <div class="grupo-input">
+                        <label>Método de Pago</label>
+                        <select id="metodo-pago">
+                            <option value="transferencia">Transferencia Bancaria (10% OFF)</option>
+                            <option value="tarjeta">Tarjeta de Crédito / Débito</option>
+                            <option value="efectivo">Efectivo al recibir</option>
+                        </select>
+                    </div>
 
-        </footer>
-
-    </div>
-
-        <div id="comprobante-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h3>✅ Compra Procesada con Éxito</h3>
-            
-            <p style="color:#d32f2f; font-weight: bold;">
-                NOTIFICACIÓN ENVIADA AL VENDEDOR:
-            </p>
-
-            <div class="cliente-datos">
-                <p><strong>Estado:</strong> Compra efectuada y comprobante enviado al cliente.</p>
-                <p id="modal-cliente-nombre"></p>
-                <p id="modal-cliente-email"></p>
-                <p><strong>Total:</strong> <span id="modal-total" style="color: #4CAF50;"></span></p>
-            </div>
-            
-            <p style="font-weight: bold;">DETALLE DEL COMPROBANTE ENVIADO:</p>
-            <div class="detalle-compra">
-                <pre id="modal-detalle"></pre>
-            </div>
-            
-            <div class="modal-footer">
-                <button class="btn-modal-cerrar" id="btn-modal-aceptar">Aceptar y Continuar</button>
+                    <input type="hidden" id="input-total-compra">
+                    
+                    <button type="submit" class="btn-hero btn-full">
+                        Confirmar y Realizar Pedido
+                    </button>
+                </form>
             </div>
         </div>
-    </div>
 
-
-    <script src="carrito.js"></script>
-    <script src="auth.js"></script>
+       <script src="js/auth-check.js"></script> 
+       <script src="js/main.js"></script> 
+        <script src="js/carrito.js"></script>
+         
 </body>
+
+ <footer>
+            <div id="footer-content">
+                <p>&copy; 2025 Las Magnolias. Cosmética Natural.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+</footer>
+
 </html>
