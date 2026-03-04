@@ -88,12 +88,12 @@
         </div>
 
         <div class="filtros-categorias">
-    <button class="btn-categoria" onclick="filtrarProductos('Todos')">Todos</button>
-    <button class="btn-categoria" onclick="filtrarProductos('Facial')">Facial</button>
-    <button class="btn-categoria" onclick="filtrarProductos('Corporal')">Corporal</button>
-    <button class="btn-categoria" onclick="filtrarProductos('Maquillaje')">Maquillaje</button>
-    <button class="btn-categoria" onclick="filtrarProductos('Perfumes')">Perfumes</button>
-</div>
+            <button class="btn-categoria active" onclick="filtrarProductos('Todos', this)">Todos</button>
+            <button class="btn-categoria" onclick="filtrarProductos('Facial', this)">Facial</button>
+            <button class="btn-categoria" onclick="filtrarProductos('Corporal', this)">Corporal</button>
+            <button class="btn-categoria" onclick="filtrarProductos('Maquillaje', this)">Maquillaje</button>
+            <button class="btn-categoria" onclick="filtrarProductos('Perfume', this)">Perfumes</button>
+        </div>
 
         <section id="productos-contenedor" class="productos-grid">
             </section>

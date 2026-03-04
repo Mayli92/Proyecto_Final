@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
         // Si el usuario envió una categoría y no es "Todos", filtramos en MongoDB
         if (categoria && categoria !== "Todos") {
             // Usamos una expresión regular para que no importe si es "Perfume" o "perfume"
-            filtro = { category: { $regex: new RegExp(categoria, "i") } };
+            filtro = { category: { $regex: new RegExp("^" + categoria + "$", "i") } };
         }
 
         const productos = await Product.find(filtro);

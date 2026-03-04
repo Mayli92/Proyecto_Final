@@ -36,7 +36,7 @@ async function cargarProductos(categoria = 'Todos') {
                     <img src="${p.image}" alt="${p.nombre}">
                     <div class="info-card">
                         <h3>${p.nombre}</h3>
-                        <p class="categoria-tag">${p.category || 'Sin categoría'}</p>
+                        <p class="categoria-tag">${p.category || 'General'}</p>
                         <p class="precio">$${p.precio}</p>
                         <div class="botones-container">
                             <button class="btn-detalle" onclick="verDetalle('${p._id}')">
@@ -57,17 +57,17 @@ async function cargarProductos(categoria = 'Todos') {
 }
 
 // 2. LÓGICA DEL CARRITO (ESTO ES LO QUE FALTABA)
-function agregarAlCarrito(id, nombre, precio, imagen) {
+function agregarAlCarrito(id, nombre, precio, image) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     
-    const producto = {_id: id, nombre, precio, imagen, cantidad: 1 };
+    const producto = {_id: id, nombre, precio, image, cantidad: 1 };
     
     // Si ya existe, aumentar cantidad
     const existe = carrito.find(item => item._id === id);
     if (existe) {
         existe.cantidad++;
     } else {
-        carrito.push({ _id: id, nombre, precio, imagen, cantidad: 1 });
+        carrito.push({ _id: id, nombre, precio, image, cantidad: 1 });
     }
     
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -113,9 +113,9 @@ async function verDetalle(id) {
                     <img src="${p.image}" alt="${p.nombre}">
                 </div>
                 <div class="detalle-texto">
-                    <span class="categoria-tag">${p.categoria || 'Fragancia'}</span>
+                    <span class="categoria-tag">${p.category || 'Fragancia'}</span>
                     <h2>${p.nombre}</h2>
-                    <p>${p.descripcion || 'Producto de alta calidad seleccionado especialmente para nuestra colección Las Magnolias.'}</p>
+                    <p>${p.description || 'Producto de alta calidad seleccionado especialmente para nuestra colección Las Magnolias.'}</p>
                     <p class="precio-grande">$${p.precio}</p>
                     <button class="btn-agregar" onclick="agregarAlCarrito('${p._id}', '${p.nombre}', ${p.precio}, '${p.image}')">
                         <i class="fas fa-cart-plus"></i> Añadir al carrito
@@ -133,7 +133,18 @@ async function verDetalle(id) {
     }
 }
 
-function filtrarProductos(cat) { cargarProductos(cat); }
+function filtrarProductos(cat, elemento) { // Quita la clase activa de todos los botones
+    const botones = document.querySelectorAll('.btn-categoria');
+    botones.forEach(btn => btn.classList.remove('active'));
+
+    // Agrega la clase activa al botón presionado
+    if (elemento) {
+        elemento.classList.add('active');
+    }
+
+    // Llama a la carga de productos
+    cargarProductos(cat);
+}
 
 function buscarPorNombre() {
     const texto = document.getElementById("input-busqueda").value.toLowerCase();

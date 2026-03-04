@@ -13,24 +13,20 @@ async function consultarProductos() {
         let valorTotal = 0;
         listaAdmin.innerHTML = "";
         productos.forEach(p => {
-            // Estilo para stock bajo (menos de 5 unidades)
-            const estiloStock = p.stock < 5 ? 'style="color:red; font-weight:bold; background-color:#ffe6e6;"' : '';
-            
-            listaAdmin.innerHTML += `
-                <tr>
-                    <td><img src="${p.image}" width="50" style="border-radius:5px;"></td>
-                    <td><strong>${p.nombre}</strong>/td>
-                    <td>${p.category || 'General'}</td>
-                    <td>$${p.precio}</td>
-                    <td><span class="${p.stock<5? 'stock-critico' : ''}">${p.stock}</span></td>
-        <td>
-                    <td>
-                        <button onclick="prepararEdicion('${p._id}')" class="btn-editar">✏️</button>
-                        <button onclick="eliminarProducto('${p._id}')" class="btn-eliminar">🗑️</button>
-                    </td>
-                </tr>
-            `;
-        });
+    listaAdmin.innerHTML += `
+        <tr>
+            <td><img src="${p.image}" width="50" style="border-radius:5px;"></td>
+            <td><strong>${p.nombre}</strong></td> 
+            <td>${p.category || 'General'}</td>
+            <td>$${p.precio}</td>
+            <td><span class="${p.stock < 5 ? 'stock-critico' : ''}">${p.stock}</span></td>
+            <td>
+                <button onclick="prepararEdicion('${p._id}')" class="btn-editar">✏️</button>
+                <button onclick="eliminarProducto('${p._id}')" class="btn-eliminar">🗑️</button>
+            </td>
+        </tr>
+    `;
+});
 
         // Actualizar las tarjetas del Dashboard
         document.getElementById("total-productos").innerText = productos.length;
